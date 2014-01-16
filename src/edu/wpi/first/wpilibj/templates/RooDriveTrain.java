@@ -62,15 +62,21 @@ public class RooDriveTrain {
         stop = false;
     }
     public void start() {
-        while (!stop) {
-            speed = joystick.getY();
-
-            rightPWM1.set(speed-1);
-            rightPWM2.set(speed-1);
-
-            leftPWM1.set(speed+1);
-            leftPWM2.set(speed+1);
+        while (true) {
+            while (!stop) {
+                speed = joystick.getY();
+                setRight(speed-joystick.getX());
+                setLeft(speed+joystick.getX());
+            }
         }
+    }
+    public void setLeft(double newSpeed) {
+        leftPWM1.set(newSpeed);
+        leftPWM2.set(newSpeed);
+    }
+    public void setRight(double newSpeed) {
+        rightPWM1.set(newSpeed);
+        rightPWM2.set(newSpeed);
     }
     public void stop() {
         stop = true;
