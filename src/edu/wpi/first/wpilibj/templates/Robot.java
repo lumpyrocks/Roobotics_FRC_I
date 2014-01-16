@@ -41,7 +41,8 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        victor.set(joystick.getX());
+        RooDriveTrain rdt = new RooDriveTrain(new Joystick(1));
+        rdt.start();
     }
     
     /**
