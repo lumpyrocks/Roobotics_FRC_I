@@ -9,7 +9,8 @@ package edu.wpi.first.wpilibj.templates;
 
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-
+import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.Joystick;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -18,12 +19,15 @@ import edu.wpi.first.wpilibj.IterativeRobot;
  * directory.
  */
 public class Robot extends IterativeRobot {
+    Victor victor = new Victor (1);
+    Joystick joystick = new Joystick (1);
+    
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-
+        
     }
 
     /**
@@ -37,7 +41,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        
+        victor.set(joystick.getX());
     }
     
     /**
