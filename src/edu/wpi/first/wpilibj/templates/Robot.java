@@ -9,7 +9,6 @@ package edu.wpi.first.wpilibj.templates;
 
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Joystick;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -18,14 +17,20 @@ import edu.wpi.first.wpilibj.Joystick;
  * directory.
  */
 public class Robot extends IterativeRobot {
-    Joystick joystick;
+    RooJoystick joystick;
+    RooDriveTrain rdt;
+    
+    private final int rightDriveTrainPWM = 3;
+    private final int leftDriveTrainPWM = 4;
     
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-        joystick = new Joystick (1);
+        joystick = new RooJoystick (1);
+        rdt = new RooDriveTrain(joystick, rightDriveTrainPWM, leftDriveTrainPWM);
+        System.out.println("Robot Init did indeed run");
     }
 
     /**
@@ -40,8 +45,8 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         //Teleop Periodic Functions as "While(Teleop){}", please do not put indefinite loops within it, this is a bad.
-        RooDriveTrain rdt = new RooDriveTrain(new Joystick(1));
         rdt.periodic();
+        System.out.println("" + joystick.rooGetX() + "," + joystick.rooGetY());
     }
     
     /**

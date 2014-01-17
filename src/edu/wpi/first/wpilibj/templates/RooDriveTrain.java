@@ -6,6 +6,7 @@
 
 package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Talon;
 /**
  *
  * @author Dorian
@@ -13,51 +14,42 @@ import edu.wpi.first.wpilibj.Joystick;
 public class RooDriveTrain {
     
      private final int RIGHT1;
-     //private final int RIGHT2;
      private final int LEFT1;
-     //private final int LEFT2;
      
-     private Joystick joystick;
+     private RooJoystick joystick;
      
      private double speed;
-     
+     private double rightness;
      //Left and Right PWMs, Roo- signifies that they'll be out own class extending the Kit Talon Class
      //Although there are two motors on eitherside, working under the assumption that they're going to be using a PWM cable Splitter
-     private RooTalon rightPWM1;
-     //private RooTalon rightPWM2;
-     private RooTalon leftPWM1;
-     //private RooTalon leftPWM2;
+     private Talon rightPWM1;
+
+     private Talon leftPWM1;
      
      private boolean stop;
     
-    public RooDriveTrain (Joystick joystick, int rightPWMChannel1, int rightPWMChannel2, int leftPWMChannel1, int leftPWMChannel2){
+    public RooDriveTrain (RooJoystick joystick, int rightPWMChannel, int leftPWMChannel){
         //joystick will be provided by the instantiating class, 
         //the idea is to have a signle Joystick that's running throughout all of the code
         this.joystick = joystick;
         
         // A note about PWM channels, PWMs on the right should always be in ODD PWM channels, on the left in EVEN PWM channels
-        this.RIGHT1 = rightPWMChannel1;
-        //this.RIGHT2 = rightPWMChannel2;
-        this.LEFT1 = leftPWMChannel1;
-        //this.LEFT2 = leftPWMChannel2;
+        this.RIGHT1 = rightPWMChannel;
+        this.LEFT1 = leftPWMChannel;
         
-        rightPWM1 = new RooTalon (RIGHT1);
-        //rightPWM2 = new RooTalon (RIGHT2);
-        leftPWM1 = new RooTalon (LEFT1);
-        //leftPWM2 = new RooTalon(LEFT2);
+        rightPWM1 = new Talon (RIGHT1);
+        leftPWM1 = new Talon (LEFT1);
         
         stop = false;
     }
-    public RooDriveTrain(Joystick joystick) {
+    public RooDriveTrain(RooJoystick joystick) {
         this.RIGHT1 = 3;
-        //this.RIGHT2 = 3;
         this.LEFT1 = 4;
-        //this.LEFT2 = 4;
         
-        rightPWM1 = new RooTalon (RIGHT1);
-        //rightPWM2 = new RooTalon (RIGHT2);
-        leftPWM1 = new RooTalon (LEFT1);
-        //leftPWM2 = new RooTalon(LEFT2);
+        rightPWM1 = new Talon (RIGHT1);
+        leftPWM1 = new Talon (LEFT1);
+        
+        this.joystick = joystick;
         
         stop = false;
     }
@@ -80,24 +72,27 @@ public class RooDriveTrain {
         }else{
             speed = joystick.getY();
         }*/
-        speed = joystick.getY();
-        System.out.println(speed);
+        speed = joystick.rooGetY();
+        rightness = joystick.rooGetX();
+        
         //Set the speeds of the motors according to Speed
-        setRight(speed);
-        setLeft(speed);
+        setRight(speed+rightness);
+        setLeft(speed-rightness);
+        
         //The following two lines have been commented out until we can get the Bot to move Foreward and Back according to Joystick
         //setRight(speed-joystick.getX());
         //setLeft(speed+joystick.getX());
     }
     public void setLeft(double newSpeed) {
         leftPWM1.set(newSpeed);
-        //leftPWM2.set(newSpeed);
     }
     public void setRight(double newSpeed) {
-        rightPWM1.set(newSpeed);
-        //rightPWM2.set(newSpeed);
+        rightPWM1.set(-newSpeed);
     }
     public void stop() {
         stop = true;
+    }
+    public void testRight() {
+        setRight(1);
     }
 }
