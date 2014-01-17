@@ -38,8 +38,8 @@ public class RooDriveTrain {
         // A note about PWM channels, PWMs on the right should always be in ODD PWM channels, on the left in EVEN PWM channels
         this.RIGHT1 = rightPWMChannel1;
         //this.RIGHT2 = rightPWMChannel2;
-        this.LEFT1 = rightPWMChannel1;
-        //this.LEFT2 = rightPWMChannel2;
+        this.LEFT1 = leftPWMChannel1;
+        //this.LEFT2 = leftPWMChannel2;
         
         rightPWM1 = new RooTalon (RIGHT1);
         //rightPWM2 = new RooTalon (RIGHT2);
@@ -61,14 +61,32 @@ public class RooDriveTrain {
         
         stop = false;
     }
-    public void start() {
-        while (true) {
-            while (!stop) {
-                speed = joystick.getY();
-                setRight(speed-joystick.getX());
-                setLeft(speed+joystick.getX());
-            }
+    
+    /**
+     * The function called by teleopPeriodic. 
+     */
+    public void periodic() {
+        //In case you didn't see the note in teleopPeriodic:
+        //There are to be no loops within teleopPeriodic, and ESPECIALLY not indefinite loops.
+        //This is because teleopPeriodic is functionally already a loop
+        //therefore any contiuous action or logic (such as setting motors) can happen only once in it
+        //And it will still happen 20 times per second.
+        
+        //Just because we do not set the speed does not mean the speed is not set
+        //therefore, when stop is pressed, we specifically set the speed to 0.
+        if (stop) {
+            //Set
+            speed = 0;
+        }else{
+            speed = joystick.getY();
         }
+        
+        //Set the speeds of the motors according to Speed
+        setRight(speed);
+        setLeft(speed);
+        //The following two lines have been commented out until we can get the Bot to move Foreward and Back according to Joystick
+        //setRight(speed-joystick.getX());
+        //setLeft(speed+joystick.getX());
     }
     public void setLeft(double newSpeed) {
         leftPWM1.set(newSpeed);
