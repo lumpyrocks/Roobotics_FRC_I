@@ -9,7 +9,7 @@ package edu.wpi.first.wpilibj.templates;
 
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Joystick;
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -19,7 +19,7 @@ import edu.wpi.first.wpilibj.Joystick;
  * directory.
  */
 public class Robot extends IterativeRobot {
-    Victor victor = new Victor (1);
+    Talon talon = new Talon (3);
     Joystick joystick = new Joystick (1);
     
     /**
@@ -41,7 +41,7 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        victor.set(joystick.getX());
+        talon.set(joystick.getX());
     }
     
     /**
