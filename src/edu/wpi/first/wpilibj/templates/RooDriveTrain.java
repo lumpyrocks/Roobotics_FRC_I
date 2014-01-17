@@ -74,13 +74,14 @@ public class RooDriveTrain {
         
         //Just because we do not set the speed does not mean the speed is not set
         //therefore, when stop is pressed, we specifically set the speed to 0.
-        if (stop) {
+       /* if (stop) {
             //Set
             speed = 0;
         }else{
             speed = joystick.getY();
-        }
-        
+        }*/
+        speed = joystick.getY();
+        System.out.println(speed);
         //Set the speeds of the motors according to Speed
         setRight(speed);
         setLeft(speed);
