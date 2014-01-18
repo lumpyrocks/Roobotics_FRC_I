@@ -19,6 +19,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 public class Robot extends IterativeRobot {
     RooJoystick joystick;
     RooDriveTrain rdt;
+    RooUltraSonicRangeFinder rangeFinder;
     
     private final int rightDriveTrainPWM = 4;
     private final int leftDriveTrainPWM = 3;
@@ -30,6 +31,7 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
         joystick = new RooJoystick (1);
         rdt = new RooDriveTrain(joystick, rightDriveTrainPWM, leftDriveTrainPWM);
+        rangeFinder = new RooUltraSonicRangeFinder (1);
         System.out.println("Robot Init did indeed run");
     }
 
@@ -46,7 +48,16 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         //Teleop Periodic Functions as "While(Teleop){}", please do not put indefinite loops within it, this is a bad.
         rdt.periodic();
-        System.out.println("" + joystick.rooGetX() + "," + joystick.rooGetY());
+        
+        //Following is code for testing the UltraSonic Range Finders
+        if (joystick.getRawButton(6)){
+            System.out.println(rangeFinder.getRaw());
+        }
+        if (joystick.getRawButton(11)){
+            rangeFinder.changeAverageBits(1);
+        }else if (joystick.getRawButton(10)){
+            rangeFinder.changeAverageBits(-1);
+        }
     }
     
     /**
