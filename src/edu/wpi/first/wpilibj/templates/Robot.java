@@ -20,8 +20,8 @@ public class Robot extends IterativeRobot {
     RooJoystick joystick;
     RooDriveTrain rdt;
     
-    private final int rightDriveTrainPWM = 3;
-    private final int leftDriveTrainPWM = 4;
+    private final int rightDriveTrainPWM = 4;
+    private final int leftDriveTrainPWM = 3;
     
     /**
      * This function is run when the robot is first started up and should be

@@ -84,10 +84,10 @@ public class RooDriveTrain {
         //setLeft(speed+joystick.getX());
     }
     public void setLeft(double newSpeed) {
-        leftPWM1.set(newSpeed);
+        leftPWM1.set(-newSpeed);
     }
     public void setRight(double newSpeed) {
-        rightPWM1.set(-newSpeed);
+        rightPWM1.set(newSpeed);
     }
     public void stop() {
         stop = true;
