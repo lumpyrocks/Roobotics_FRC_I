@@ -19,7 +19,7 @@ public class RooDriveTrain {
      private RooJoystick joystick;
      
      private double speed;
-     private double rightiousness;
+     private double rightness;
      //Left and Right PWMs, Roo- signifies that they'll be out own class extending the Kit Talon Class
      //Although there are two motors on eitherside, working under the assumption that they're going to be using a PWM cable Splitter
      private Talon rightPWM1;
@@ -73,11 +73,11 @@ public class RooDriveTrain {
             speed = joystick.getY();
         }*/
         speed = joystick.rooGetY();
-        rightiousness = joystick.rooGetX();
+        rightness = joystick.rooGetX();
         
         //Set the speeds of the motors according to Speed
-        setRight(speed+rightiousness);
-        setLeft(speed-rightiousness);
+        setRight(speed+rightness);
+        setLeft(speed-rightness);
         
         //The following two lines have been commented out until we can get the Bot to move Foreward and Back according to Joystick
         //setRight(speed-joystick.getX());

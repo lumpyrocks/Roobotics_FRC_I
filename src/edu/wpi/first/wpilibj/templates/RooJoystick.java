@@ -28,7 +28,7 @@ public class RooJoystick extends Joystick {
             x=0;
         }
         else{
-            x =x*x*x;
+            x =x*Math.abs(x);
         }
         return x;
     }
