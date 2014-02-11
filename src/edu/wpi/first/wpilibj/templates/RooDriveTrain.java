@@ -44,18 +44,9 @@ public class RooDriveTrain {
         leftPWM1 = new Talon (LEFT1);
         
         stop = false;
+        SmartDashboard.putBoolean(invertDriveDS, false);
     }
-    public RooDriveTrain(RooJoystick joystick) {
-        this.RIGHT1 = 3;
-        this.LEFT1 = 4;
-        
-        rightPWM1 = new Talon (RIGHT1);
-        leftPWM1 = new Talon (LEFT1);
-        
-        this.joystick = joystick;
-        
-        stop = false;
-    }
+    
     
     /**
      * The function called by teleopPeriodic. 
@@ -68,16 +59,12 @@ public class RooDriveTrain {
         //And it will still happen 20 times per second.
         
         //Just because we do not set the speed does not mean the speed is not set
-        //therefore, when stop is pressed, we specifically set the speed to 0.
-       /* if (stop) {
-            //Set
-            speed = 0;
-        }else{
-            speed = joystick.getY();
-        }*/
+        //therefore, when stop is pressed, we specifically set the speed to 0
         speed = joystick.rooGetY();
         rightness = joystick.rooGetX();
         
+        double cubedSpeed = speed * speed * speed;
+        double cubedRightness = rightness * rightness * rightness;
         //Set the speeds of the motors according to Speed
         setRight(speed+rightness);
         setLeft(speed-rightness);
@@ -88,7 +75,7 @@ public class RooDriveTrain {
     }
     public void setLeft(double newSpeed) {
         //inverts the output of the motor given that the inverted speed is checked out
-        if (SmartDashboard.getBoolean(invertDriveDS, false) == true){
+        if (SmartDashboard.getBoolean(invertDriveDS) == true){
             leftPWM1.set(-newSpeed);
         }else{
             leftPWM1.set(newSpeed);
@@ -96,7 +83,7 @@ public class RooDriveTrain {
     }
     public void setRight(double newSpeed) {
         //inverts the output of the motor given that the inverted speed is checked out
-        if (SmartDashboard.getBoolean(invertDriveDS, false) == true){
+        if (SmartDashboard.getBoolean(invertDriveDS) == true){
             rightPWM1.set(newSpeed);
         }else{
             rightPWM1.set(-newSpeed);
