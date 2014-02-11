@@ -7,6 +7,7 @@
 package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  * @author Dorian
@@ -27,6 +28,8 @@ public class RooDriveTrain {
      private Talon leftPWM1;
      
      private boolean stop;
+     
+     private final String invertDriveDS = "Inverted Drive?";
     
     public RooDriveTrain (RooJoystick joystick, int rightPWMChannel, int leftPWMChannel){
         //joystick will be provided by the instantiating class, 
@@ -84,10 +87,20 @@ public class RooDriveTrain {
         //setLeft(speed+joystick.getX());
     }
     public void setLeft(double newSpeed) {
-        leftPWM1.set(-newSpeed);
+        //inverts the output of the motor given that the inverted speed is checked out
+        if (SmartDashboard.getBoolean(invertDriveDS, false) == true){
+            leftPWM1.set(-newSpeed);
+        }else{
+            leftPWM1.set(newSpeed);
+        }
     }
     public void setRight(double newSpeed) {
-        rightPWM1.set(newSpeed);
+        //inverts the output of the motor given that the inverted speed is checked out
+        if (SmartDashboard.getBoolean(invertDriveDS, false) == true){
+            rightPWM1.set(newSpeed);
+        }else{
+            rightPWM1.set(-newSpeed);
+        }
     }
     public void stop() {
         stop = true;
