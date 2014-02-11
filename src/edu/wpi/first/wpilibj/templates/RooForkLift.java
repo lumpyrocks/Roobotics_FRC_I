@@ -21,12 +21,14 @@ public class RooForkLift {
     private double speed;
     
     public RooForkLift (Joystick joystick){
-        motor = new Victor (Robotmap.FORKLIFT_MOTOR_CHANNEL);
-        
+        motor = new Victor (RobotMap.FORKLIFT_MOTOR_CHANNEL);
+        this.joystick = joystick;
         
     }
     
     public void periodic (){
-        
+        if (joystick.getRawButton(RobotMap.JOG_FORKLIFT_UP)){
+            
+        }
     }
 }
