@@ -13,7 +13,20 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * @author Dorian
  */
 public class RooForkLift {
-    public RooForkLift (Joystick joystick, int ForkLiftPWMChannel){
+    
+    Joystick joystick;
+    
+    Victor motor;
+    
+    private double speed;
+    
+    public RooForkLift (Joystick joystick){
+        motor = new Victor (Robotmap.FORKLIFT_MOTOR_CHANNEL);
+        
+        
+    }
+    
+    public void periodic (){
         
     }
 }
