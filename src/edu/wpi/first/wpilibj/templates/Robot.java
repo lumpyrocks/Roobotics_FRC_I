@@ -53,10 +53,10 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         //Teleop Periodic Functions as "While(Teleop){}", please do not put indefinite loops within it, this is a bad.
         rdt.periodic();
-        encoder.s
-        SmartDashboard.putNumber("DOOD, the encoder.get is totally at like:", encoder.get());
-        SmartDashboard.putNumber("DOOD, the encoder.getRaw is totally at like:", encoder.getRaw());
-        SmartDashboard.putNumber("DOOD, the encoder.getDistance is totally at like:", encoder.getDistance());
+        //encoder.s
+        //SmartDashboard.putNumber("DOOD, the encoder.get is totally at like:", encoder.get());
+        //SmartDashboard.putNumber("DOOD, the encoder.getRaw is totally at like:", encoder.getRaw());
+        //SmartDashboard.putNumber("DOOD, the encoder.getDistance is totally at like:", encoder.getDistance());
     }
     
     /**
