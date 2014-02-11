@@ -37,7 +37,9 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
         joystick = new RooJoystick (1);
         rdt = new RooDriveTrain(joystick, rightDriveTrainPWM, leftDriveTrainPWM);
-        encoder = new Encoder (3, 4);
+        encoder = new Encoder (4, 3);
+        encoder.setSamplesToAverage(5);
+        encoder.start();
     }
 
     /**
@@ -53,10 +55,14 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         //Teleop Periodic Functions as "While(Teleop){}", please do not put indefinite loops within it, this is a bad.
         rdt.periodic();
-        encoder.s
+        
+       
         SmartDashboard.putNumber("DOOD, the encoder.get is totally at like:", encoder.get());
         SmartDashboard.putNumber("DOOD, the encoder.getRaw is totally at like:", encoder.getRaw());
         SmartDashboard.putNumber("DOOD, the encoder.getDistance is totally at like:", encoder.getDistance());
+        System.out.println("DOOD, the encoder.get is totally at like:" + encoder.get());
+        System.out.println("DOOD, the encoder.getRaw is totally at like:" + encoder.getRaw());
+        System.out.println("DOOD, the encoder.getDistance is totally at like:" + encoder.getDistance());
     }
     
     /**
