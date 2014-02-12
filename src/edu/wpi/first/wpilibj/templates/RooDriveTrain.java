@@ -14,34 +14,27 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class RooDriveTrain {
     
-     private final int RIGHT1;
-     private final int LEFT1;
-     
      private RooJoystick joystick;
      
      private double speed;
      private double rightness;
      //Left and Right PWMs, Roo- signifies that they'll be out own class extending the Kit Talon Class
      //Although there are two motors on eitherside, working under the assumption that they're going to be using a PWM cable Splitter
-     private Talon rightPWM1;
+     private Talon rightPWM;
 
-     private Talon leftPWM1;
+     private Talon leftPWM;
      
      private boolean stop;
      
      private final String invertDriveDS = "Inverted Drive?";
     
-    public RooDriveTrain (RooJoystick joystick, int rightPWMChannel, int leftPWMChannel){
+    public RooDriveTrain (RooJoystick joystick){
         //joystick will be provided by the instantiating class, 
         //the idea is to have a signle Joystick that's running throughout all of the code
         this.joystick = joystick;
-        
-        // A note about PWM channels, PWMs on the right should always be in ODD PWM channels, on the left in EVEN PWM channels
-        this.RIGHT1 = rightPWMChannel;
-        this.LEFT1 = leftPWMChannel;
-        
-        rightPWM1 = new Talon (RIGHT1);
-        leftPWM1 = new Talon (LEFT1);
+
+        rightPWM = new Talon (RobotMap.DRIVE_RIGHT_MOTOR_CHANNEL);
+        leftPWM = new Talon (RobotMap.DRIVE_LEFT_MOTOR_CHANNEL);
         
         stop = false;
         SmartDashboard.putBoolean(invertDriveDS, false);
@@ -76,17 +69,17 @@ public class RooDriveTrain {
     public void setLeft(double newSpeed) {
         //inverts the output of the motor given that the inverted speed is checked out
         if (SmartDashboard.getBoolean(invertDriveDS) == true){
-            leftPWM1.set(-newSpeed);
+            leftPWM.set(-newSpeed);
         }else{
-            leftPWM1.set(newSpeed);
+            leftPWM.set(newSpeed);
         }
     }
     public void setRight(double newSpeed) {
         //inverts the output of the motor given that the inverted speed is checked out
         if (SmartDashboard.getBoolean(invertDriveDS) == true){
-            rightPWM1.set(newSpeed);
+            rightPWM.set(newSpeed);
         }else{
-            rightPWM1.set(-newSpeed);
+            rightPWM.set(-newSpeed);
         }
     }
     public void stop() {

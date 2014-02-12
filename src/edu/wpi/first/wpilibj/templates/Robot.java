@@ -23,6 +23,7 @@ public class Robot extends IterativeRobot {
     RooDriveTrain rdt;
     Encoder encoder;
     
+    //These should be put into RobotMap
     private final int rightDriveTrainPWM = 4;
     private final int leftDriveTrainPWM = 3;
     private final int leftPultPWM = 6;
@@ -35,8 +36,8 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-        joystick = new RooJoystick (1);
-        rdt = new RooDriveTrain(joystick, rightDriveTrainPWM, leftDriveTrainPWM);
+        joystick = new RooJoystick (RobotMap.DRIVE_JOYSTICK_PORT);
+        rdt = new RooDriveTrain(joystick);
         encoder = new Encoder (3, 4);
     }
 

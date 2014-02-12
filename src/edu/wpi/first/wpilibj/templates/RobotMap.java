@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -30,7 +30,7 @@ public class RobotMap {
     
     // Drive Subsystem
     // Digital Sidecar PWM outputs
-    public static final int DRIVE_LEFT_MOTOR_CHANNEL = 2;
+    public static final int DRIVE_LEFT_MOTOR_CHANNEL = 4;
     public static final int DRIVE_RIGHT_MOTOR_CHANNEL = 3;
    
     // Analog Breakout
