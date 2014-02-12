@@ -8,6 +8,8 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.AnalogChannel;
+
 /**
  *
  * @author Dorian
@@ -15,6 +17,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class RooDriveTrain {
     
      private RooJoystick joystick;
+     private AnalogChannel ultraSonicRight;
+     private AnalogChannel ultraSonicLeft;
      
      private double speed;
      private double rightness;
@@ -28,11 +32,13 @@ public class RooDriveTrain {
      
      private final String invertDriveDS = "Inverted Drive?";
     
-    public RooDriveTrain (RooJoystick joystick){
+    public RooDriveTrain (RooJoystick joystick, AnalogChannel ultraSonicRight, AnalogChannel ultraSonicLeft){
         //joystick will be provided by the instantiating class, 
         //the idea is to have a signle Joystick that's running throughout all of the code
         this.joystick = joystick;
-
+        this.ultraSonicRight = ultraSonicRight;
+        this.ultraSonicLeft = ultraSonicLeft;
+        
         rightPWM = new Talon (RobotMap.DRIVE_RIGHT_MOTOR_CHANNEL);
         leftPWM = new Talon (RobotMap.DRIVE_LEFT_MOTOR_CHANNEL);
         
@@ -66,6 +72,12 @@ public class RooDriveTrain {
         //setRight(speed-joystick.getX());
         //setLeft(speed+joystick.getX());
     }
+    
+    public void useAutoRangersToCorrect (){
+        double distanceLeft = ultraSonicLeft.getAverageVoltage();
+        double distanceRight = ultraSonicRight.getAverageVoltage();
+    }
+    
     public void setLeft(double newSpeed) {
         //inverts the output of the motor given that the inverted speed is checked out
         if (SmartDashboard.getBoolean(invertDriveDS) == true){

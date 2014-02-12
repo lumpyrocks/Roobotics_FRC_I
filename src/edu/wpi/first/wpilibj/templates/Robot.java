@@ -11,6 +11,7 @@ package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.AnalogChannel;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -21,7 +22,10 @@ import edu.wpi.first.wpilibj.Encoder;
 public class Robot extends IterativeRobot {
     RooJoystick joystick;
     RooDriveTrain rdt;
+    RooForkLift fl;
     Encoder encoder;
+    AnalogChannel ultraSonicLeft;
+    AnalogChannel ultraSonicRight;
     
     //These should be put into RobotMap
     private final int rightDriveTrainPWM = 4;
@@ -37,8 +41,10 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
         joystick = new RooJoystick (RobotMap.DRIVE_JOYSTICK_PORT);
-        rdt = new RooDriveTrain(joystick);
-        encoder = new Encoder (3, 4);
+        ultraSonicRight = new AnalogChannel(1);
+        ultraSonicLeft = new AnalogChannel(2);
+        rdt = new RooDriveTrain(joystick, ultraSonicRight, ultraSonicLeft);
+        fl = new RooForkLift(joystick);
     }
 
     /**
@@ -54,6 +60,7 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
         //Teleop Periodic Functions as "While(Teleop){}", please do not put indefinite loops within it, this is a bad.
         rdt.periodic();
+        fl.periodic();
         //encoder.s
         //SmartDashboard.putNumber("DOOD, the encoder.get is totally at like:", encoder.get());
         //SmartDashboard.putNumber("DOOD, the encoder.getRaw is totally at like:", encoder.getRaw());

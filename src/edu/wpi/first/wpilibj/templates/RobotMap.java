@@ -43,8 +43,8 @@ public class RobotMap {
     public static final int BUMP_RIGHT_BUTTON = 3;
     public static final int BUMP_FORWARD_BUTTON = 2;
     public static final int BUMP_REVERSE_BUTTON = 1;
-    public static final int JOG_FORKLIFT_UP = 6;
-    public static final int JOG_FORKLIFT_DOWN = 7;
+    public static final int JOG_FORKLIFT_UP = 11;
+    public static final int JOG_FORKLIFT_DOWN = 10;
 ////////////////////////////////////////////////////////////////////////////////
     
     // Auto-Ranger Subsystem
@@ -84,7 +84,8 @@ public class RobotMap {
     public static final String SMARTDASHBOARD_AUTORANGER_VALUE = "AutoRanger Value";
     public static final String SMARTDASHBOARD_AUTORANGER_VALUE_INCHES = "AutoRanger Value in Inches";
     public static final String SMARTDASHBOARD_AUTORANGER_AT_DESIRED_VALUE = "In Position?";
-
+    public static final String SMARTDASHBOARD_FORKLIFT_UP_SPEED_CONSTANT = "Forklift Up Speed: ";
+    public static final String SMARTDASHBOARD_FORKLIFT_DOWN_SPEED_CONSTANT = "Forklift Down Speed: ";
     
     
     
