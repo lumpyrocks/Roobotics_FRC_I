@@ -23,6 +23,7 @@ public class Robot extends IterativeRobot {
     RooJoystick joystick;
     RooDriveTrain rdt;
     RooForkLift fl;
+    RooCatapult pult;
     Encoder encoder;
     AnalogChannel ultraSonicLeft;
     AnalogChannel ultraSonicRight;
@@ -45,6 +46,7 @@ public class Robot extends IterativeRobot {
         ultraSonicLeft = new AnalogChannel(2);
         rdt = new RooDriveTrain(joystick, ultraSonicRight, ultraSonicLeft);
         fl = new RooForkLift(joystick);
+        pult = new RooCatapult(joystick);
     }
 
     /**
@@ -61,6 +63,7 @@ public class Robot extends IterativeRobot {
         //Teleop Periodic Functions as "While(Teleop){}", please do not put indefinite loops within it, this is a bad.
         rdt.periodic();
         fl.periodic();
+        pult.periodic();
         //encoder.s
         //SmartDashboard.putNumber("DOOD, the encoder.get is totally at like:", encoder.get());
         //SmartDashboard.putNumber("DOOD, the encoder.getRaw is totally at like:", encoder.getRaw());

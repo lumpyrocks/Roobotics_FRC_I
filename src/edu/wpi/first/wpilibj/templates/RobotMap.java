@@ -40,11 +40,13 @@ public class RobotMap {
     public static final int FORKLIFT_JOYSTICK_PORT = 2;
     //Buttons for Joystick, these numbers are temporary
     public static final int BUMP_LEFT_BUTTON = 4;
+    public static final int LAUNCH_BUTTON = 1;
     public static final int BUMP_RIGHT_BUTTON = 3;
     public static final int BUMP_FORWARD_BUTTON = 2;
     public static final int BUMP_REVERSE_BUTTON = 1;
     public static final int JOG_FORKLIFT_UP = 11;
     public static final int JOG_FORKLIFT_DOWN = 10;
+    public static final int USE_AUTORANGER_TO_CORRECT = 8;
 ////////////////////////////////////////////////////////////////////////////////
     
     // Auto-Ranger Subsystem
@@ -86,7 +88,7 @@ public class RobotMap {
     public static final String SMARTDASHBOARD_AUTORANGER_AT_DESIRED_VALUE = "In Position?";
     public static final String SMARTDASHBOARD_FORKLIFT_UP_SPEED_CONSTANT = "Forklift Up Speed: ";
     public static final String SMARTDASHBOARD_FORKLIFT_DOWN_SPEED_CONSTANT = "Forklift Down Speed: ";
-    
+    public static final String SMARTDASHBOARD_SKEW_OUTPUT = "Skew: ";
     
     
     

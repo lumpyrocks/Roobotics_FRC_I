@@ -59,7 +59,20 @@ public class RooDriveTrain {
         
         //Just because we do not set the speed does not mean the speed is not set
         //therefore, when stop is pressed, we specifically set the speed to 0
-        speed = joystick.rooGetY();
+        joystickDrive ();
+        if (joystick.getRawButton(RobotMap.USE_AUTORANGER_TO_CORRECT)){
+            useAutoRangersToCorrect ();
+        }
+        
+        
+        
+        //The following two lines have been commented out until we can get the Bot to move Foreward and Back according to Joystick
+        //setRight(speed-joystick.getX());
+        //setLeft(speed+joystick.getX());
+    }
+    
+    public void joystickDrive(){
+          speed = joystick.rooGetY();
         rightness = joystick.rooGetX();
         
         double cubedSpeed = speed * speed * speed;
@@ -67,15 +80,14 @@ public class RooDriveTrain {
         //Set the speeds of the motors according to Speed
         setRight(speed+rightness);
         setLeft(speed-rightness);
-        
-        //The following two lines have been commented out until we can get the Bot to move Foreward and Back according to Joystick
-        //setRight(speed-joystick.getX());
-        //setLeft(speed+joystick.getX());
     }
     
     public void useAutoRangersToCorrect (){
         double distanceLeft = ultraSonicLeft.getAverageVoltage();
         double distanceRight = ultraSonicRight.getAverageVoltage();
+        double skew = distanceLeft - distanceRight;
+        SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_SKEW_OUTPUT, skew);
+        
     }
     
     public void setLeft(double newSpeed) {
