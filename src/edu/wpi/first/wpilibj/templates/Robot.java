@@ -24,17 +24,12 @@ public class Robot extends IterativeRobot {
     RooDriveTrain rdt;
     RooForkLift fl;
     RooCatapult pult;
+    RooKicker kicker;
+    RooCosmetics cosmo;
     Encoder encoder;
     AnalogChannel ultraSonicLeft;
     AnalogChannel ultraSonicRight;
-    
-    //These should be put into RobotMap
-    private final int rightDriveTrainPWM = 4;
-    private final int leftDriveTrainPWM = 3;
-    private final int leftPultPWM = 6;
-    private final int rightPultPWM = 5;
-    private final int kickerPWM = 7;
-    private final int forkliftPWM = 8;
+
     
     /**
      * This function is run when the robot is first started up and should be
@@ -47,8 +42,14 @@ public class Robot extends IterativeRobot {
         rdt = new RooDriveTrain(joystick, ultraSonicRight, ultraSonicLeft);
         fl = new RooForkLift(joystick);
         pult = new RooCatapult(joystick);
+        kicker = new RooKicker(joystick);
+        cosmo = new RooCosmetics ();
     }
 
+    
+    public void autonomousInit (){
+        cosmo.init();
+    }
     /**
      * This function is called periodically during autonomous
      */
@@ -56,6 +57,10 @@ public class Robot extends IterativeRobot {
 
     }
 
+    public void teleopInit () {
+        cosmo.init();
+    }
+    
     /**
      * This function is called periodically during operator control
      */
@@ -64,11 +69,13 @@ public class Robot extends IterativeRobot {
         rdt.periodic();
         fl.periodic();
         pult.periodic();
+        kicker.periodic();
         //encoder.s
         //SmartDashboard.putNumber("DOOD, the encoder.get is totally at like:", encoder.get());
         //SmartDashboard.putNumber("DOOD, the encoder.getRaw is totally at like:", encoder.getRaw());
         //SmartDashboard.putNumber("DOOD, the encoder.getDistance is totally at like:", encoder.getDistance());
     }
+    
     
     /**
      * This function is called periodically during test mode
