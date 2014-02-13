@@ -58,6 +58,10 @@ public class RobotMap {
     public static final int RANGE_BEACON_RED_CHANNEL = 1;
     public static final int RANGE_BEACON_YELLOW_CHANNEL = 2;
     public static final int RANGE_BEACON_GREEN_CHANNEL = 3;
+    
+    public static final int RED_LED_SOLENOID_CHANNEL = 1;
+    public static final int BLUE_LED_SOLENOID_CHANNEL = 3;
+    public static final int GREEN_LED_SOLENOID_CHANNEL = 2;
 ////////////////////////////////////////////////////////////////////////////////
     
     // Launcher Subsystem

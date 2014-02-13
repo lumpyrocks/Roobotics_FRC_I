@@ -24,9 +24,9 @@ public class RooCosmetics {
     public RooCosmetics (){
         //A class for all of the sexy parts of our robot
         //using Driverstation to get which alliance the Team is on
-        redLEDs = new Solenoid (1);
-        greenLEDs = new Solenoid (2);
-        blueLEDs = new Solenoid (3);
+        redLEDs = new Solenoid (RobotMap.RED_LED_SOLENOID_CHANNEL);
+        greenLEDs = new Solenoid (RobotMap.GREEN_LED_SOLENOID_CHANNEL);
+        blueLEDs = new Solenoid (RobotMap.BLUE_LED_SOLENOID_CHANNEL);
         ds = DriverStation.getInstance();
         SmartDashboard.putBoolean(RobotMap.SMARTDASHBOARD_LED_TOGGLE, false);
         
