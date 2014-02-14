@@ -21,8 +21,8 @@ public class RooForkLift {
     private double speed;
     
     //TODO: Figure this shiz out
-    private final double startingUpSpeed = .6;
-    private final double startingDownSpeed = .25;
+    private final double startingUpSpeed = .7;
+    private final double startingDownSpeed = .18;
     
     public RooForkLift (Joystick joystick){
         motor = new Victor (RobotMap.FORKLIFT_MOTOR_CHANNEL);

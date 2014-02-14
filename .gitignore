@@ -1,2 +1,7 @@
 /build/
 /nbproject/private/
+*.xml
+
+nbproject/private/private.xml
+
+nbproject/private/private.xml
