@@ -15,10 +15,10 @@ import edu.wpi.first.wpilibj.AnalogChannel;
  * @author Dorian
  */
 public class RooDriveTrain {
-    
+     private static RooDriveTrain driveTrain;
      private RooJoystick joystick;
-     private AnalogChannel ultraSonicRight;
-     private AnalogChannel ultraSonicLeft;
+//     private AnalogChannel ultraSonicRight;
+//     private AnalogChannel ultraSonicLeft;
      
      private double speed;
      private double rightness;
@@ -27,17 +27,24 @@ public class RooDriveTrain {
      private Talon rightPWM;
 
      private Talon leftPWM;
-     
+     private RooAutoRangerSensorPair sensorPair;
      private boolean stop;
      
      private final String invertDriveDS = "Inverted Drive?";
     
-    public RooDriveTrain (RooJoystick joystick, AnalogChannel ultraSonicRight, AnalogChannel ultraSonicLeft){
+     public static RooDriveTrain getInstance() {
+         if (driveTrain==null) {
+             driveTrain = new RooDriveTrain(new RooJoystick(RobotMap.DRIVE_JOYSTICK_PORT));
+         }
+         return driveTrain;
+     }
+    public RooDriveTrain (RooJoystick joystick){
         //joystick will be provided by the instantiating class, 
         //the idea is to have a signle Joystick that's running throughout all of the code
         this.joystick = joystick;
-        this.ultraSonicRight = ultraSonicRight;
-        this.ultraSonicLeft = ultraSonicLeft;
+        /*this.ultraSonicRight = ultraSonicRight;
+        this.ultraSonicLeft = ultraSonicLeft;*/
+        this.sensorPair = sensorPair;
         
         rightPWM = new Talon (RobotMap.DRIVE_RIGHT_MOTOR_CHANNEL);
         leftPWM = new Talon (RobotMap.DRIVE_LEFT_MOTOR_CHANNEL);
@@ -52,17 +59,13 @@ public class RooDriveTrain {
      */
     public void periodic() {
         //Since we only want one fucntion changing the speeds of the motors, blah
-        boolean motorsChangedThisIteration = false;
-        if (motorsChangedThisIteration == false){
-            motorsChangedThisIteration = autoRangerPeriodic ();
-        }
-        if (motorsChangedThisIteration){
+//        boolean motorsChangedThisIteration = false;
+//        if (motorsChangedThisIteration == false){
+//            motorsChangedThisIteration = autoRangerPeriodic ();
+//        }
+//        if (motorsChangedThisIteration){
             joystickDrive ();
-        }
-        
-        
-        
-        
+        //}
         //The following two lines have been commented out until we can get the Bot to move Foreward and Back according to Joystick
         //setRight(speed-joystick.getX());
         //setLeft(speed+joystick.getX());
@@ -79,11 +82,11 @@ public class RooDriveTrain {
         setLeft(speed-rightness);
     }
     
-    public boolean autoRangerPeriodic (){
+   /* public boolean autoRangerPeriodic (){
         //prints the autoranger data to the dashboard, then if True, will move moters to try and compensate.
         //returns true if the motors were changes so that the rest of the class can be sure to avoid overriding
-        double distanceLeft = ultraSonicLeft.getAverageVoltage();
-        double distanceRight = ultraSonicRight.getAverageVoltage();
+        double distanceLeft = sensorPair.getLeftDistance();
+        double distanceRight = sensorPair.getRightDistance();
         double skew = distanceLeft - distanceRight;
         SmartDashboard.putNumber("Right Ranger: ", distanceRight);
         SmartDashboard.putNumber("Left Ranger: ", distanceLeft);
@@ -96,7 +99,7 @@ public class RooDriveTrain {
         }else{
             return false;  
         }
-    }
+    }*/
     
     
     public void setLeft(double newSpeed) {
