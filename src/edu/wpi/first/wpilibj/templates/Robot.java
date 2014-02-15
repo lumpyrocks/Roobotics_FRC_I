@@ -32,7 +32,8 @@ public class Robot extends IterativeRobot {
     AnalogChannel ultraSonicRight;
     
     Encoder encoder;
-    
+    DigitalInput dia;
+    DigitalInput dib;
     
     /**
      * This function is run when the robot is first started up and should be
@@ -47,7 +48,10 @@ public class Robot extends IterativeRobot {
         pult = new RooCatapult(joystick);
         kicker = new RooKicker(joystick);
         cosmo = new RooCosmetics ();
-        encoder = new Encoder (3, 4, true, CounterBase.EncodingType.k1X);
+        
+        dia= new DigitalInput (1);
+        dib = new DigitalInput (2);
+        encoder = new Encoder (1, 2, true, CounterBase.EncodingType.k4X);
         encoder.start();
     }
 
@@ -77,9 +81,12 @@ public class Robot extends IterativeRobot {
         pult.periodic();
         kicker.periodic();
         
-        SmartDashboard.putNumber("DOOD, the encoder.get is totally at like:", encoder.get());
-        SmartDashboard.putNumber("DOOD, the encoder.getRaw is totally at like:", encoder.getRaw());
-        SmartDashboard.putNumber("DOOD, the encoder.getDistance is totally at like:", encoder.getDistance());
+        int thang = encoder.get();
+        int otherthang = encoder.getRaw();
+        double tooManythangs = encoder.getDistance();
+        SmartDashboard.putNumber("DOOD, the encoder.get is totally at like:", thang);
+        SmartDashboard.putNumber("DOOD, the encoder.getRaw is totally at like:", otherthang);
+        SmartDashboard.putNumber("DOOD, the encoder.getDistance is totally at like:", tooManythangs);
     }
     
     
