@@ -30,7 +30,7 @@ public class Robot extends IterativeRobot {
     RooCosmetics cosmo;
     AnalogChannel ultraSonicLeft;
     AnalogChannel ultraSonicRight;
-    
+    RooAutoRanger ranger;
     Encoder encoder;
     DigitalInput dia;
     DigitalInput dib;
@@ -53,6 +53,7 @@ public class Robot extends IterativeRobot {
         dib = new DigitalInput (2);
         encoder = new Encoder (3, 4, true, CounterBase.EncodingType.k4X);
         encoder.start();
+        ranger.adjustPosition();
     }
 
     
