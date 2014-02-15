@@ -43,7 +43,7 @@ public class Robot extends IterativeRobot {
         joystick = new RooJoystick (RobotMap.DRIVE_JOYSTICK_PORT);
         ultraSonicRight = new AnalogChannel(RobotMap.ULTRASONIC_RANGER_CHANNE_RIGHT);
         ultraSonicLeft = new AnalogChannel(RobotMap.ULTRASONIC_RANGER_CHANNEL_LEFT);
-        rdt = new RooDriveTrain(joystick, ultraSonicRight, ultraSonicLeft);
+        rdt = RooDriveTrain.getInstance();
         fl = new RooForkLift(joystick);
         pult = new RooCatapult(joystick);
         kicker = new RooKicker(joystick);
