@@ -5,6 +5,7 @@
  */
 
 package edu.wpi.first.wpilibj.templates;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -23,6 +24,11 @@ public class RooAutoRanger {
     }
     public void adjustPosition() {
         double diff = sensors.getAverageDifference();
+        
+        SmartDashboard.putNumber("Right Ranger: ", sensors.getRightDistance());
+        SmartDashboard.putNumber("Left Ranger: ", sensors.getLeftDistance());
+        SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_SKEW_OUTPUT, diff);
+        
         if (Math.abs(diff)>=ERROR_MARGIN && joystick.getRawButton(RobotMap.USE_AUTORANGER_TO_CORRECT)) {
             if (sensors.getLeftDistance()>sensors.getRightDistance()) {
                 driveTrain.setRight(diff);

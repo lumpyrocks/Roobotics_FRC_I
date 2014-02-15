@@ -51,7 +51,7 @@ public class Robot extends IterativeRobot {
         
         dia= new DigitalInput (1);
         dib = new DigitalInput (2);
-        encoder = new Encoder (1, 2, true, CounterBase.EncodingType.k4X);
+        encoder = new Encoder (3, 4, true, CounterBase.EncodingType.k4X);
         encoder.start();
     }
 
