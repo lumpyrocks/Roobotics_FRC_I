@@ -52,7 +52,8 @@ public class RobotMap {
     
     // Auto-Ranger Subsystem
     // Analog Breakout
-    public static final int ULTRASONIC_RANGER_CHANNEL = 2;
+    public static final int ULTRASONIC_RANGER_CHANNE_RIGHT = 1;
+    public static final int ULTRASONIC_RANGER_CHANNEL_LEFT = 2;
     
     // Digital Sidecar GPIO outputs
     public static final int RANGE_BEACON_RED_CHANNEL = 1;

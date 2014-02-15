@@ -28,7 +28,7 @@ public class RooCosmetics {
         greenLEDs = new Solenoid (RobotMap.GREEN_LED_SOLENOID_CHANNEL);
         blueLEDs = new Solenoid (RobotMap.BLUE_LED_SOLENOID_CHANNEL);
         ds = DriverStation.getInstance();
-        SmartDashboard.putBoolean(RobotMap.SMARTDASHBOARD_LED_TOGGLE, false);
+        SmartDashboard.putBoolean(RobotMap.SMARTDASHBOARD_LED_TOGGLE, true);
         
     }
     

@@ -51,18 +51,15 @@ public class RooDriveTrain {
      * The function called by teleopPeriodic. 
      */
     public void periodic() {
-        //In case you didn't see the note in teleopPeriodic:
-        //There are to be no loops within teleopPeriodic, and ESPECIALLY not indefinite loops.
-        //This is because teleopPeriodic is functionally already a loop
-        //therefore any contiuous action or logic (such as setting motors) can happen only once in it
-        //And it will still happen 20 times per second.
-        
-        //Just because we do not set the speed does not mean the speed is not set
-        //therefore, when stop is pressed, we specifically set the speed to 0
-        joystickDrive ();
-        if (joystick.getRawButton(RobotMap.USE_AUTORANGER_TO_CORRECT)){
-            useAutoRangersToCorrect ();
+        //Since we only want one fucntion changing the speeds of the motors, blah
+        boolean motorsChangedThisIteration = false;
+        if (motorsChangedThisIteration == false){
+            motorsChangedThisIteration = autoRangerPeriodic ();
         }
+        if (motorsChangedThisIteration){
+            joystickDrive ();
+        }
+        
         
         
         
@@ -72,23 +69,35 @@ public class RooDriveTrain {
     }
     
     public void joystickDrive(){
-          speed = joystick.rooGetY();
+        speed = joystick.rooGetY();
         rightness = joystick.rooGetX();
         
-        double cubedSpeed = speed * speed * speed;
-        double cubedRightness = rightness * rightness * rightness;
+        double squaredSpeed = Math.abs(speed) * speed;
+        double squaredRightness = Math.abs(rightness) * rightness;
         //Set the speeds of the motors according to Speed
         setRight(speed+rightness);
         setLeft(speed-rightness);
     }
     
-    public void useAutoRangersToCorrect (){
+    public boolean autoRangerPeriodic (){
+        //prints the autoranger data to the dashboard, then if True, will move moters to try and compensate.
+        //returns true if the motors were changes so that the rest of the class can be sure to avoid overriding
         double distanceLeft = ultraSonicLeft.getAverageVoltage();
         double distanceRight = ultraSonicRight.getAverageVoltage();
         double skew = distanceLeft - distanceRight;
+        SmartDashboard.putNumber("Right Ranger: ", distanceRight);
+        SmartDashboard.putNumber("Left Ranger: ", distanceLeft);
         SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_SKEW_OUTPUT, skew);
         
+        if (joystick.getRawButton(RobotMap.USE_AUTORANGER_TO_CORRECT)){
+            setLeft (skew);
+            setRight (-1 * skew);
+            return true;
+        }else{
+            return false;  
+        }
     }
+    
     
     public void setLeft(double newSpeed) {
         //inverts the output of the motor given that the inverted speed is checked out

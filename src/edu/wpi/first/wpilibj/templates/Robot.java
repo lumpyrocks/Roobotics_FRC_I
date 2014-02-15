@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.AnalogChannel;
+import edu.wpi.first.wpilibj.CounterBase;
+import edu.wpi.first.wpilibj.DigitalInput;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -26,10 +28,11 @@ public class Robot extends IterativeRobot {
     RooCatapult pult;
     RooKicker kicker;
     RooCosmetics cosmo;
-    Encoder encoder;
     AnalogChannel ultraSonicLeft;
     AnalogChannel ultraSonicRight;
-
+    
+    Encoder encoder;
+    
     
     /**
      * This function is run when the robot is first started up and should be
@@ -37,13 +40,15 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
         joystick = new RooJoystick (RobotMap.DRIVE_JOYSTICK_PORT);
-        ultraSonicRight = new AnalogChannel(1);
-        ultraSonicLeft = new AnalogChannel(2);
+        ultraSonicRight = new AnalogChannel(RobotMap.ULTRASONIC_RANGER_CHANNE_RIGHT);
+        ultraSonicLeft = new AnalogChannel(RobotMap.ULTRASONIC_RANGER_CHANNEL_LEFT);
         rdt = new RooDriveTrain(joystick, ultraSonicRight, ultraSonicLeft);
         fl = new RooForkLift(joystick);
         pult = new RooCatapult(joystick);
         kicker = new RooKicker(joystick);
         cosmo = new RooCosmetics ();
+        encoder = new Encoder (3, 4, true, CounterBase.EncodingType.k1X);
+        encoder.start();
     }
 
     
@@ -58,6 +63,7 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit () {
+        encoder.start();
         cosmo.init();
     }
     
@@ -70,10 +76,10 @@ public class Robot extends IterativeRobot {
         fl.periodic();
         pult.periodic();
         kicker.periodic();
-        //encoder.s
-        //SmartDashboard.putNumber("DOOD, the encoder.get is totally at like:", encoder.get());
-        //SmartDashboard.putNumber("DOOD, the encoder.getRaw is totally at like:", encoder.getRaw());
-        //SmartDashboard.putNumber("DOOD, the encoder.getDistance is totally at like:", encoder.getDistance());
+        
+        SmartDashboard.putNumber("DOOD, the encoder.get is totally at like:", encoder.get());
+        SmartDashboard.putNumber("DOOD, the encoder.getRaw is totally at like:", encoder.getRaw());
+        SmartDashboard.putNumber("DOOD, the encoder.getDistance is totally at like:", encoder.getDistance());
     }
     
     

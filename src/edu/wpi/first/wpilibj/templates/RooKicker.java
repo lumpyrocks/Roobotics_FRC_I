@@ -39,9 +39,9 @@ public class RooKicker {
         //Pretty Simple, set speed to the speed set in the dashboard according to which button is pressed.
       
         if (joystick.getRawButton(RobotMap.JOG_KICKER_UP)){
-            speed = SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_KICKER_UP_SPEED_CONSTANT, startingUpSpeed);
+            speed = -1 * SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_KICKER_UP_SPEED_CONSTANT, startingUpSpeed);
         }else if (joystick.getRawButton(RobotMap.JOG_KICKER_DOWN)){
-            speed = -1 * SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_KICKER_DOWN_SPEED_CONSTANT, startingDownSpeed);
+            speed = SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_KICKER_DOWN_SPEED_CONSTANT, startingDownSpeed);
         } else{
             speed = 0;
         }
