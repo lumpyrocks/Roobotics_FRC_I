@@ -12,6 +12,15 @@ package edu.wpi.first.wpilibj.templates;
  */
 import java.util.Random;
 public class RooWreakHavoc implements Runnable {
+    
+    private static RooWreakHavoc rwh = null;
+    public static RooWreakHavoc getInstance() {
+        if (rwh == null) {
+            rwh = new RooWreakHavoc();
+        }
+        return rwh;
+    }
+    
     private RooDriveTrain rdt;
     private RooCatapult rcat;
     private RooForkLift rf;
