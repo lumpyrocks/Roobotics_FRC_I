@@ -38,7 +38,7 @@ public class RooCatapult{
     }
     
     public void periodic(){
-        if (buttonHeldNow == true && buttonHeldLastIteration == false && safetyButtonHeldNow == true && safetyButtonHeldLastIteration == false){
+        if (buttonHeldNow == true && buttonHeldLastIteration == false && safetyButtonHeldNow == true){
             launch();
         }
         buttonHeldLastIteration = buttonHeldNow;
