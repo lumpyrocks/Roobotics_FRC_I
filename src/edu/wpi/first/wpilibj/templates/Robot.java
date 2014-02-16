@@ -29,7 +29,9 @@ public class Robot extends IterativeRobot {
     RooKicker kicker;
     RooCosmetics cosmo;
     RooAutoRanger ranger;
-    AnalogChannel encoder;
+    AnalogChannel encoderCatapult;
+    AnalogChannel encoderForklift;
+    AnalogChannel encoderKicker;
     RooAutonomous auton;
     
     
@@ -45,11 +47,10 @@ public class Robot extends IterativeRobot {
         pult = new RooCatapult(joystick);
         kicker = new RooKicker(joystick);
         cosmo = new RooCosmetics ();
-        encoder = new AnalogChannel(3);
+        encoderCatapult = new AnalogChannel(RobotMap.ENCODER_CATAPULT);
+        encoderKicker = new AnalogChannel(RobotMap.ENCODER_KICKER);
+        encoderForklift = new AnalogChannel(RobotMap.ENCODER_FORKLIFT);
         auton = new RooAutonomous(rdt, pult);
-         
-        
-
         ranger = new RooAutoRanger (joystick, rdt);
         
         //dia= new DigitalInput (1);
@@ -85,8 +86,7 @@ public class Robot extends IterativeRobot {
         fl.periodic();
         pult.periodic();
         kicker.periodic();
-        SmartDashboard.putNumber("Encoder value", encoder.getAverageVoltage());
-        ranger.adjustPosition();
+        SmartDashboard.putNumber("Encoder value", encoderCatapult.getAverageVoltage());
         ranger.adjustPosition();
         
         /*
