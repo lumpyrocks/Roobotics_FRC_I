@@ -15,6 +15,13 @@ public class RooAutoRangerSensorPair {
     private static final double VOLTS_PER_INCH = 0.009766;
     private AnalogChannel sensor_right;
     private AnalogChannel sensor_left;
+    private static RooAutoRangerSensorPair rarsp = null;
+    public static RooAutoRangerSensorPair getInstance() {
+        if (rarsp == null) {
+            rarsp = new RooAutoRangerSensorPair();
+        }
+        return rarsp;
+    }
     public RooAutoRangerSensorPair() {
         sensor_right = new AnalogChannel(RobotMap.ULTRASONIC_RANGER_CHANNE_RIGHT);
         sensor_left = new AnalogChannel(RobotMap.ULTRASONIC_RANGER_CHANNEL_LEFT);

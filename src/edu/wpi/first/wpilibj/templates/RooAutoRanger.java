@@ -29,7 +29,7 @@ public class RooAutoRanger {
     public RooAutoRanger(RooJoystick joystick, RooDriveTrain driveTrain) {
         this.driveTrain = driveTrain;
         this.joystick = joystick;
-        sensors = new RooAutoRangerSensorPair();
+        sensors = RooAutoRangerSensorPair.getInstance();
     }
     public RooAutoRanger() {
         this.driveTrain = RooDriveTrain.getInstance();
