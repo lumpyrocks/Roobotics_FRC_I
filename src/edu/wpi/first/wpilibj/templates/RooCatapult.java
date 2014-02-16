@@ -25,20 +25,27 @@ public class RooCatapult{
     
     private boolean buttonHeldLastIteration;
     private boolean buttonHeldNow;
+    private boolean safetyButtonHeldNow;
+    private boolean safetyButtonHeldLastIteration;
     
     public RooCatapult(){ 
         motors = new RooCatapultMotorPair(false);
         this.joystick = RooJoystick.getInstance();
         buttonHeldLastIteration = false;
         buttonHeldNow = false;
+        safetyButtonHeldNow = false;
+        safetyButtonHeldLastIteration = false;
     }
     
     public void periodic(){
-        if (buttonHeldNow == true && buttonHeldLastIteration == false){
+        if (buttonHeldNow == true && buttonHeldLastIteration == false && safetyButtonHeldNow == true && safetyButtonHeldLastIteration == false){
             launch();
         }
         buttonHeldLastIteration = buttonHeldNow;
         buttonHeldNow = joystick.getRawButton(RobotMap.LAUNCH_BUTTON);
+        safetyButtonHeldLastIteration = safetyButtonHeldNow;
+        safetyButtonHeldNow = joystick.getRawButton(RobotMap.CATAPULT_SAFETY_BUTTON);
+        
     }
     
     public void launch(){

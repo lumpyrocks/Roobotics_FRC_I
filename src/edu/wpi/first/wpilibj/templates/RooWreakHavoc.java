@@ -27,6 +27,7 @@ public class RooWreakHavoc implements Runnable {
     private Random rn;
     private boolean run;
     private Thread t = null;
+    
     public RooWreakHavoc() {
         this.rn = new Random();
         this.run = false;
@@ -34,8 +35,12 @@ public class RooWreakHavoc implements Runnable {
         this.rf = RooForkLift.getInstance();
         this.rdt = RooDriveTrain.getInstance();
         this.t = new Thread(t);
+    }
+    
+    public void autonInit (){
         t.start();
     }
+    
     public int randInt() {
         int retInt = rn.nextInt();
         return 0;

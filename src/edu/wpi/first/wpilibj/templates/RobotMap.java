@@ -33,10 +33,15 @@ public class RobotMap {
     public static final int DRIVE_LEFT_MOTOR_CHANNEL = 4;
     public static final int DRIVE_RIGHT_MOTOR_CHANNEL = 3;
    
+    //Digital IO
+    public static final int KICKER_LIMIT_SWITCH = 1;
+    
     // Analog Breakout
     public static final int GYRO_CHANNEL = 1;
     // Driver Station
     public static final int DRIVE_JOYSTICK_PORT = 1;
+    // The catapult safety button
+    public static final int CATAPULT_SAFETY_BUTTON = 3;
     //Buttons for Joystick, these numbers are temporary
     public static final int BUMP_LEFT_BUTTON = 4;
     public static final int LAUNCH_BUTTON = 1;

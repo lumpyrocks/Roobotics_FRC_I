@@ -24,12 +24,12 @@ public class RooCatapultMotorPair {
     public void setSpeed(double speed) {
         this.speed = speed;
         if (inverted) {
-            catMotor1.set(this.speed);
-            catMotor2.set(-this.speed);
-        }
-        else {
             catMotor1.set(-this.speed);
             catMotor2.set(this.speed);
+        }
+        else {
+            catMotor1.set(this.speed);
+            catMotor2.set(-this.speed);
         }
     }
     public double getSpeed() {

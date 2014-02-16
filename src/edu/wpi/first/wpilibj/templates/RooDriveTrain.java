@@ -78,14 +78,16 @@ public class RooDriveTrain {
     }
     
     public void joystickDrive(){
-        speed = joystick.rooGetY();
-        rightness = joystick.rooGetX();
-        
-        double squaredSpeed = Math.abs(speed) * speed;
-        double squaredRightness = Math.abs(rightness) * rightness;
-        //Set the speeds of the motors according to Speed
-        setRight(speed+rightness);
-        setLeft(speed-rightness);
+        if (!joystick.getRawButton(2)) {
+            speed = joystick.rooGetY();
+            rightness = joystick.rooGetX();
+
+            double squaredSpeed = Math.abs(speed) * speed;
+            double squaredRightness = Math.abs(rightness) * rightness;
+            //Set the speeds of the motors according to Speed
+            setRight(speed+rightness);
+            setLeft(speed-rightness);
+        }
     }
     
    /* public boolean autoRangerPeriodic (){
