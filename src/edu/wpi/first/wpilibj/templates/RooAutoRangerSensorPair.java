@@ -21,7 +21,7 @@ public class RooAutoRangerSensorPair {
     }
     
     // Convert voltage to inches
-    private double voltsToInches(double voltage) {
+    public double voltsToInches(double voltage) {
         double inches = (voltage/VOLTS_PER_INCH);
         return inches;
     }
@@ -37,8 +37,9 @@ public class RooAutoRangerSensorPair {
     }
     // Get the distance (in inches) from the right sensor
     public double getRightDistance() {
-        return voltsToInches(sensor_right.getVoltage());
+        return voltsToInches(sensor_left.getAverageVoltage());
     }
+    
     // Get the difference between the sensor readings (in inches)
     public double getDifference() {
         double difference = getLeftDistance()-getRightDistance();
