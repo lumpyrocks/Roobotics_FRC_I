@@ -54,6 +54,10 @@ public class RobotMap {
     // Analog Breakout
     public static final int ULTRASONIC_RANGER_CHANNE_RIGHT = 1;
     public static final int ULTRASONIC_RANGER_CHANNEL_LEFT = 2;
+    //Encoders acting as potentiometers
+    public static final int ENCODER_CATAPULT = 3;
+    public static final int ENCODER_FORKLIFT = 4;
+    public static final int ENCODER_KICKER = 5;
     
     // Digital Sidecar GPIO outputs
     public static final int RANGE_BEACON_RED_CHANNEL = 1;

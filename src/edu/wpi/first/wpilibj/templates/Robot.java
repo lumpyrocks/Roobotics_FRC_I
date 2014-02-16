@@ -30,7 +30,7 @@ public class Robot extends IterativeRobot {
     RooCosmetics cosmo;
     RooAutoRanger ranger;
     AnalogChannel encoder;
-    
+    RooAutonomous auton;
     
     
     /**
@@ -46,7 +46,8 @@ public class Robot extends IterativeRobot {
         kicker = new RooKicker(joystick);
         cosmo = new RooCosmetics ();
         encoder = new AnalogChannel(3);
-        
+        auton = new RooAutonomous(rdt, pult);
+         
         
 
         ranger = new RooAutoRanger (joystick, rdt);

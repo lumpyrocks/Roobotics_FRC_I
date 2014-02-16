@@ -38,9 +38,9 @@ public class RooCatapult{
                 Thread.sleep(3);
                 motors.setSpeed(i);
             }*/
-            motors.setSpeed(.1);
+            motors.setSpeed(.25);
             Thread.sleep(1000);
-            motors.setSpeed(-.1);
+            motors.setSpeed(-.25);
             Thread.sleep(1000);
             motors.setSpeed(0);
             /*for(double i = 1; i>=0; i = i - .1){
