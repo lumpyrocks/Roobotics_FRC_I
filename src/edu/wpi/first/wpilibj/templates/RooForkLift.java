@@ -14,6 +14,16 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class RooForkLift {
     
+    private static RooForkLift rfl = null;
+    
+    public static RooForkLift getInstance() {
+        if (rfl==null) {
+             rfl = new RooForkLift(RooJoystick.getInstance());
+         }
+         return rfl;
+     }
+    
+    
     Joystick joystick;
     
     Victor motor;

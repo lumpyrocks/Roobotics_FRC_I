@@ -40,11 +40,11 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-        joystick = new RooJoystick (RobotMap.DRIVE_JOYSTICK_PORT);
+        joystick = RooJoystick.getInstance();
 
         rdt = RooDriveTrain.getInstance();
-        fl = new RooForkLift(joystick);
-        pult = new RooCatapult(joystick);
+        fl = RooForkLift.getInstance();
+        pult = RooCatapult.getInstance();
         kicker = new RooKicker(joystick);
         cosmo = new RooCosmetics ();
         encoderCatapult = new AnalogChannel(RobotMap.ENCODER_CATAPULT);

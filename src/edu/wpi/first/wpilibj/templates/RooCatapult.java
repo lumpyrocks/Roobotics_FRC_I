@@ -11,15 +11,24 @@ import edu.wpi.first.wpilibj.Joystick;
  * @author henrypitcairn
  */
 public class RooCatapult{
+    
+    private static RooCatapult rc = null;
+    public static RooCatapult getInstance() {
+        if (rc==null) {
+            rc = new RooCatapult();
+        }
+        return rc;
+    }
+    
     private RooCatapultMotorPair motors;
     private Joystick joystick;
     
     private boolean buttonHeldLastIteration;
     private boolean buttonHeldNow;
     
-    public RooCatapult(Joystick joystick){ 
+    public RooCatapult(){ 
         motors = new RooCatapultMotorPair(false);
-        this.joystick = joystick;
+        this.joystick = RooJoystick.getInstance();
         buttonHeldLastIteration = false;
         buttonHeldNow = false;
     }

@@ -12,6 +12,18 @@ import edu.wpi.first.wpilibj.Joystick;
  * @author Dorian
  */
 public class RooJoystick extends Joystick {
+    
+    private static RooJoystick rj = null;
+    public static RooJoystick getInstance() {
+        if (rj == null) {
+            rj = new RooJoystick(RobotMap.DRIVE_JOYSTICK_PORT);
+            return rj;
+        }
+        else {
+            return rj;
+        }
+    }
+    
     private final double deadzone =.05 ;   
     public RooJoystick (int channel){
         super (channel);

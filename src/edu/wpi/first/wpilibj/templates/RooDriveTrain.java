@@ -15,7 +15,7 @@ import edu.wpi.first.wpilibj.AnalogChannel;
  * @author Dorian
  */
 public class RooDriveTrain {
-     private static RooDriveTrain driveTrain;
+     private static RooDriveTrain driveTrain = null;
      private RooJoystick joystick;
 //     private AnalogChannel ultraSonicRight;
 //     private AnalogChannel ultraSonicLeft;
@@ -34,22 +34,28 @@ public class RooDriveTrain {
     
      public static RooDriveTrain getInstance() {
          if (driveTrain==null) {
-             driveTrain = new RooDriveTrain(new RooJoystick(RobotMap.DRIVE_JOYSTICK_PORT));
+             driveTrain = new RooDriveTrain();
          }
          return driveTrain;
      }
-    public RooDriveTrain (RooJoystick joystick){
+    public RooDriveTrain(RooJoystick joystick){
         //joystick will be provided by the instantiating class, 
         //the idea is to have a signle Joystick that's running throughout all of the code
         this.joystick = joystick;
         /*this.ultraSonicRight = ultraSonicRight;
         this.ultraSonicLeft = ultraSonicLeft;*/
-        this.sensorPair = sensorPair;
+        //this.sensorPair = sensorPair;
         
         rightPWM = new Talon (RobotMap.DRIVE_RIGHT_MOTOR_CHANNEL);
         leftPWM = new Talon (RobotMap.DRIVE_LEFT_MOTOR_CHANNEL);
         
-        stop = false;
+        //stop = false;
+        SmartDashboard.putBoolean(invertDriveDS, false);
+    }
+    public RooDriveTrain() {
+        this.joystick = RooJoystick.getInstance();
+        rightPWM = new Talon (RobotMap.DRIVE_RIGHT_MOTOR_CHANNEL);
+        leftPWM = new Talon (RobotMap.DRIVE_LEFT_MOTOR_CHANNEL);
         SmartDashboard.putBoolean(invertDriveDS, false);
     }
     
