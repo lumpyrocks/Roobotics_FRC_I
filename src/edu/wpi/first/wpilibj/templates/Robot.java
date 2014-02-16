@@ -33,7 +33,7 @@ public class Robot extends IterativeRobot {
     AnalogChannel encoderForklift;
     AnalogChannel encoderKicker;
     RooAutonomous auton;
-    
+    RooWreakHavoc rwh;
     
     /**
      * This function is run when the robot is first started up and should be
@@ -52,7 +52,7 @@ public class Robot extends IterativeRobot {
         encoderForklift = new AnalogChannel(RobotMap.ENCODER_FORKLIFT);
         auton = RooAutonomous.getInstance();
         ranger = RooAutoRanger.getInstance();
-        
+        rwh = new RooWreakHavoc();
     }
 
     
