@@ -50,7 +50,7 @@ public class Robot extends IterativeRobot {
         cosmo = new RooCosmetics ();
         encoder = new AnalogChannel(3);
         
-        ranger.adjustPosition();
+        
     }
 
     
@@ -78,7 +78,7 @@ public class Robot extends IterativeRobot {
         pult.periodic();
         kicker.periodic();
         SmartDashboard.putNumber("Encoder value", encoder.getAverageVoltage());
-        
+        ranger.adjustPosition();
         
     }
     
