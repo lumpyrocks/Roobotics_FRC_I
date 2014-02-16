@@ -11,6 +11,10 @@ package edu.wpi.first.wpilibj.templates;
  * @author henrypitcairn
  */
 public class RooWreakHavoc {
+    private RooDriveTrain rdt;
+    public RooWreakHavoc() {
+        this.rdt = RooDriveTrain.getInstance();
+    }
     public void killEveryone() {
     
     }
