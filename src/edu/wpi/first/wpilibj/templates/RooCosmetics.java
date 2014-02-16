@@ -49,7 +49,6 @@ public class RooCosmetics {
     private void setLEDsToAllianceColors (){
         //Should set the LEDs to Red if alliance is Red, BLue if blue, and green if neither.
         Alliance color = ds.getAlliance();
-        SmartDashboard.putString("DEBUG TOOL, COLOR = ", color.name);
         switch (color.value){
             case Alliance.kRed_val :    redLEDs.set(true);
                                         greenLEDs.set(false);

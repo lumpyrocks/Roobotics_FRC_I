@@ -53,11 +53,6 @@ public class Robot extends IterativeRobot {
         auton = RooAutonomous.getInstance();
         ranger = RooAutoRanger.getInstance();
         
-        //dia= new DigitalInput (1);
-        //dib = new DigitalInput (2);
-
-        
-
     }
 
     
@@ -86,17 +81,10 @@ public class Robot extends IterativeRobot {
         fl.periodic();
         pult.periodic();
         kicker.periodic();
-        SmartDashboard.putNumber("Encoder value", encoderCatapult.getAverageVoltage());
         ranger.adjustPosition();
         
-        /*
-        int thang = encoder.get();
-        int otherthang = encoder.getRaw();
-        double tooManythangs = encoder.getDistance();
-        SmartDashboard.putNumber("DOOD, the encoder.get is totally at like:", thang);
-        SmartDashboard.putNumber("DOOD, the encoder.getRaw is totally at like:", otherthang);
-        SmartDashboard.putNumber("DOOD, the encoder.getDistance is totally at like:", tooManythangs);
-        */
+        SmartDashboard.putNumber("Pult Encoder value", encoderCatapult.getAverageVoltage());
+        SmartDashboard.putNumber("Kicker Encoder value", encoderForklift.getAverageVoltage());
     }
     
     
