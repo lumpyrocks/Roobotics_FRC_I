@@ -15,6 +15,14 @@ import edu.wpi.first.wpilibj.DriverStation.Alliance;
  */
 public class RooCosmetics {
     
+    private static RooCosmetics rc = null;
+    public static RooCosmetics getInstance() {
+        if (rc==null) {
+            rc = new RooCosmetics();
+        }
+        return rc;
+    }
+    
     private Solenoid redLEDs;
     private Solenoid greenLEDs;
     private Solenoid blueLEDs;

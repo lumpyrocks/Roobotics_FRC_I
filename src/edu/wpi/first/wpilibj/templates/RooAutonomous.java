@@ -11,6 +11,15 @@ package edu.wpi.first.wpilibj.templates;
  * @author Dorian
  */
 public class RooAutonomous {
+    
+    private static RooAutonomous ra = null;
+    public static RooAutonomous getInstance() {
+        if (ra==null) {
+            ra = new RooAutonomous();
+        }
+        return ra;
+    }
+    
     RooDriveTrain rdt;
     RooCatapult pult;
     
@@ -19,6 +28,11 @@ public class RooAutonomous {
     public RooAutonomous (RooDriveTrain rdt, RooCatapult pult){
         this.rdt = rdt;
         this.pult = pult;
+    }
+    
+    public RooAutonomous() {
+        this.rdt = RooDriveTrain.getInstance();
+        this.pult = RooCatapult.getInstance();
     }
     
     public void doAutonomous (){

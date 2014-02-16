@@ -16,6 +16,14 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class RooKicker {
     
+    private static RooKicker rk = null;
+    public static RooKicker getInstance() {
+        if (rk==null) {
+            rk = new RooKicker();
+        }
+        return rk;
+    }
+    
     Joystick joystick;
     
     Victor motor;
@@ -29,6 +37,13 @@ public class RooKicker {
     public RooKicker (Joystick joystick){
         motor = new Victor (RobotMap.KICKER_MOTOR_CHANNEL);
         this.joystick = joystick;
+        SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_KICKER_DOWN_SPEED_CONSTANT, startingDownSpeed);
+        SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_KICKER_UP_SPEED_CONSTANT, startingUpSpeed);
+        
+    }
+    public RooKicker (){
+        motor = new Victor (RobotMap.KICKER_MOTOR_CHANNEL);
+        this.joystick = RooJoystick.getInstance();
         SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_KICKER_DOWN_SPEED_CONSTANT, startingDownSpeed);
         SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_KICKER_UP_SPEED_CONSTANT, startingUpSpeed);
         

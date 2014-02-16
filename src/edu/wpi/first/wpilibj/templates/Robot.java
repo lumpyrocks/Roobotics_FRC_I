@@ -45,12 +45,12 @@ public class Robot extends IterativeRobot {
         rdt = RooDriveTrain.getInstance();
         fl = RooForkLift.getInstance();
         pult = RooCatapult.getInstance();
-        kicker = new RooKicker(joystick);
-        cosmo = new RooCosmetics ();
+        kicker = RooKicker.getInstance();
+        cosmo = RooCosmetics.getInstance();
         encoderCatapult = new AnalogChannel(RobotMap.ENCODER_CATAPULT);
         encoderKicker = new AnalogChannel(RobotMap.ENCODER_KICKER);
         encoderForklift = new AnalogChannel(RobotMap.ENCODER_FORKLIFT);
-        auton = new RooAutonomous(rdt, pult);
+        auton = RooAutonomous.getInstance();
         ranger = new RooAutoRanger (joystick, rdt);
         
         //dia= new DigitalInput (1);
