@@ -42,23 +42,22 @@ public class RooCatapult{
     }
     
     public void launch(){
+        flatTimerLaunch();
+    }
+    
+    
+    private void flatTimerLaunch (){
+        //Timer-Based, flat-speed Launch Function, bare minimum
         try{
-            /*for(double i = 0; i<=1.0; i+= 0.1){
-                Thread.sleep(3);
-                motors.setSpeed(i);
-            }*/
             motors.setSpeed(.25);
             Thread.sleep(1000);
             motors.setSpeed(-.25);
             Thread.sleep(1000);
             motors.setSpeed(0);
-            /*for(double i = 1; i>=0; i = i - .1){
-                Thread.sleep(3);
-                motors.setSpeed(-i);
-            }*/
         } catch(java.lang.InterruptedException e){
             
         }
         motors.setSpeed(0);
     }
+    
 }
