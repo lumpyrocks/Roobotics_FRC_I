@@ -41,16 +41,25 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
         joystick = new RooJoystick (RobotMap.DRIVE_JOYSTICK_PORT);
-        ultraSonicRight = new AnalogChannel(RobotMap.ULTRASONIC_RANGER_CHANNE_RIGHT);
-        ultraSonicLeft = new AnalogChannel(RobotMap.ULTRASONIC_RANGER_CHANNEL_LEFT);
+        
         rdt = RooDriveTrain.getInstance();
         fl = new RooForkLift(joystick);
         pult = new RooCatapult(joystick);
         kicker = new RooKicker(joystick);
         cosmo = new RooCosmetics ();
+<<<<<<< HEAD
         encoder = new AnalogChannel(3);
         
         
+=======
+        ranger = new RooAutoRanger (joystick, rdt);
+        
+        //dia= new DigitalInput (1);
+        //dib = new DigitalInput (2);
+        encoder = new Encoder (3, 4, true, CounterBase.EncodingType.k4X);
+        encoder.start();
+        
+>>>>>>> You're the man now dog
     }
 
     
@@ -73,13 +82,27 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         //Teleop Periodic Functions as "While(Teleop){}", please do not put indefinite loops within it, this is a bad.
+        
         rdt.periodic();
         fl.periodic();
         pult.periodic();
         kicker.periodic();
+<<<<<<< HEAD
         SmartDashboard.putNumber("Encoder value", encoder.getAverageVoltage());
         ranger.adjustPosition();
         
+=======
+        ranger.adjustPosition();
+        
+        /*
+        int thang = encoder.get();
+        int otherthang = encoder.getRaw();
+        double tooManythangs = encoder.getDistance();
+        SmartDashboard.putNumber("DOOD, the encoder.get is totally at like:", thang);
+        SmartDashboard.putNumber("DOOD, the encoder.getRaw is totally at like:", otherthang);
+        SmartDashboard.putNumber("DOOD, the encoder.getDistance is totally at like:", tooManythangs);
+        */
+>>>>>>> You're the man now dog
     }
     
     

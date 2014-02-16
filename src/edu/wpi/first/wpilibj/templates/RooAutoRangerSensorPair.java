@@ -17,11 +17,11 @@ public class RooAutoRangerSensorPair {
     private AnalogChannel sensor_left;
     public RooAutoRangerSensorPair() {
         sensor_right = new AnalogChannel(RobotMap.ULTRASONIC_RANGER_CHANNE_RIGHT);
-        sensor_left = new AnalogChannel(RobotMap.ULTRASONIC_RANGER_CHANNE_RIGHT);
+        sensor_left = new AnalogChannel(RobotMap.ULTRASONIC_RANGER_CHANNEL_LEFT);
     }
     
     // Convert voltage to inches
-    private double voltsToInches(double voltage) {
+    public double voltsToInches(double voltage) {
         double inches = (voltage/VOLTS_PER_INCH);
         return inches;
     }
@@ -33,11 +33,11 @@ public class RooAutoRangerSensorPair {
     
     // Get the distance (in inches) from the left sensor
     public double getLeftDistance() {
-        return sensor_left.getVoltage();
+        return voltsToInches(sensor_left.getAverageVoltage());
     }
     // Get the distance (in inches) from the right sensor
     public double getRightDistance() {
-        return sensor_right.getVoltage();
+        return voltsToInches(sensor_right.getAverageVoltage());
     }
     // Get the difference between the sensor readings (in inches)
     public double getDifference() {
@@ -45,7 +45,7 @@ public class RooAutoRangerSensorPair {
         return difference;
     }
     // Get the average distance (in inches)
-    public double getAverageDifference() {
+    public double getAverage() {
         double average = (getLeftDistance()+getRightDistance())/2;
         return average;
     }
