@@ -51,7 +51,7 @@ public class Robot extends IterativeRobot {
         encoderKicker = new AnalogChannel(RobotMap.ENCODER_KICKER);
         encoderForklift = new AnalogChannel(RobotMap.ENCODER_FORKLIFT);
         auton = RooAutonomous.getInstance();
-        ranger = new RooAutoRanger (joystick, rdt);
+        ranger = RooAutoRanger.getInstance();
         
         //dia= new DigitalInput (1);
         //dib = new DigitalInput (2);

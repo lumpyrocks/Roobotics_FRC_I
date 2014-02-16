@@ -12,6 +12,15 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * @author henrypitcairn
  */
 public class RooAutoRanger {
+    
+    private static RooAutoRanger rar;
+    public static RooAutoRanger getInstance() {
+        if (rar==null) {
+            rar = new RooAutoRanger();
+        }
+        return rar;
+    }
+    
     private final double ERROR_MARGIN = 10.0;
     private RooAutoRangerSensorPair sensors;
     private RooJoystick joystick;
@@ -20,6 +29,11 @@ public class RooAutoRanger {
     public RooAutoRanger(RooJoystick joystick, RooDriveTrain driveTrain) {
         this.driveTrain = driveTrain;
         this.joystick = joystick;
+        sensors = new RooAutoRangerSensorPair();
+    }
+    public RooAutoRanger() {
+        this.driveTrain = RooDriveTrain.getInstance();
+        this.joystick = RooJoystick.getInstance();
         sensors = new RooAutoRangerSensorPair();
     }
     public void adjustPosition() {
