@@ -62,6 +62,7 @@ public class Robot extends IterativeRobot {
     
     public void autonomousInit (){
         cosmo.init();
+        auton.doAutonomous();
     }
     /**
      * This function is called periodically during autonomous

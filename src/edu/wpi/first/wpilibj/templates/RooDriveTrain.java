@@ -118,6 +118,11 @@ public class RooDriveTrain {
             rightPWM.set(-newSpeed);
         }
     }
+    
+    public void setBoth (double newSpeed){
+            setRight (newSpeed);
+            setLeft (newSpeed);
+    }
     public void stop() {
         stop = true;
     }
