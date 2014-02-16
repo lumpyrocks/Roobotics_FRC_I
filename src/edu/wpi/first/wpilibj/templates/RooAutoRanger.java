@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * @author henrypitcairn
  */
 public class RooAutoRanger {
-    private final double ERROR_MARGIN = 2.0;
+    private final double ERROR_MARGIN = 10.0;
     private RooAutoRangerSensorPair sensors;
     private RooJoystick joystick;
     private RooDriveTrain driveTrain;
@@ -23,7 +23,7 @@ public class RooAutoRanger {
         sensors = new RooAutoRangerSensorPair();
     }
     public void adjustPosition() {
-        double diff = sensors.getAverageDifference();
+        double diff = sensors.getDifference();
         
         SmartDashboard.putNumber("Right Ranger: ", sensors.getRightDistance());
         SmartDashboard.putNumber("Left Ranger: ", sensors.getLeftDistance());
@@ -31,10 +31,10 @@ public class RooAutoRanger {
         
         if (Math.abs(diff)>=ERROR_MARGIN && joystick.getRawButton(RobotMap.USE_AUTORANGER_TO_CORRECT)) {
             if (sensors.getLeftDistance()>sensors.getRightDistance()) {
-                driveTrain.setRight(diff);
+                driveTrain.setRight(1 - (sensors.getRightDistance()/sensors.getLeftDistance()));
             }
             else if (sensors.getLeftDistance()<sensors.getRightDistance()) {
-                driveTrain.setLeft(diff);
+                driveTrain.setLeft(1 - (sensors.getLeftDistance()/sensors.getRightDistance()));
             }
 //            diff = sensors.getAverageDifference();
         }

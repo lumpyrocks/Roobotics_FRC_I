@@ -28,8 +28,6 @@ public class Robot extends IterativeRobot {
     RooCatapult pult;
     RooKicker kicker;
     RooCosmetics cosmo;
-    AnalogChannel ultraSonicLeft;
-    AnalogChannel ultraSonicRight;
     RooAutoRanger ranger;
     AnalogChannel encoder;
     
@@ -41,8 +39,6 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
         joystick = new RooJoystick (RobotMap.DRIVE_JOYSTICK_PORT);
-        ultraSonicRight = new AnalogChannel(RobotMap.ULTRASONIC_RANGER_CHANNE_RIGHT);
-        ultraSonicLeft = new AnalogChannel(RobotMap.ULTRASONIC_RANGER_CHANNEL_LEFT);
         rdt = RooDriveTrain.getInstance();
         fl = new RooForkLift(joystick);
         pult = new RooCatapult(joystick);
