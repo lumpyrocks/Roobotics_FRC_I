@@ -48,15 +48,13 @@ public class RooForkLift {
       
         if (joystick.getRawButton(RobotMap.JOG_FORKLIFT_UP) || joystick.getRawButton(RobotMap.JOYSTICK_AS_FORKLIFT)){
             if (joystick.getRawButton(RobotMap.JOG_FORKLIFT_UP)) {
-                System.out.println("FL JogDown");
                 speed = SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_FORKLIFT_UP_SPEED_CONSTANT, startingUpSpeed);
             }
             else {
                 speed = -1 * joystick.getY();
             }
         }else if (joystick.getRawButton(RobotMap.JOG_FORKLIFT_DOWN) || joystick.getRawButton(RobotMap.JOYSTICK_AS_FORKLIFT)){
-            if (joystick.getRawButton(RobotMap.JOG_FORKLIFT_UP)) {
-                System.out.println("FL JogUp");
+            if (joystick.getRawButton(RobotMap.JOG_FORKLIFT_DOWN)) {
                 speed = -1 * SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_FORKLIFT_DOWN_SPEED_CONSTANT, startingDownSpeed);
             }
             else {

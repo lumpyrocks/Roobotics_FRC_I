@@ -56,7 +56,16 @@ public class RooCatapult{
         flatTimerLaunch();
     }
     
-    
+    private void makeSureForkLiftIsDown (){
+        try{
+            fl.setSpeed(SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_FORKLIFT_DOWN_SPEED_CONSTANT));
+            Thread.sleep (500);
+        }catch (java.lang.InterruptedException e){
+            
+        }
+        fl.setSpeed(0.0);
+        
+    }
     private void flatTimerLaunch (){
         //Timer-Based, flat-speed Launch Function, bare minimum
         try{
