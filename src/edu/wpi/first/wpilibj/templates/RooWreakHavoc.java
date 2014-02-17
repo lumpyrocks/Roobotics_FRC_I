@@ -11,7 +11,7 @@ package edu.wpi.first.wpilibj.templates;
  * @author henrypitcairn
  */
 import java.util.Random;
-public class RooWreakHavoc implements Runnable {
+public class RooWreakHavoc implements Runnable, RooCommonSense {
     
     private static RooWreakHavoc rwh = null;
     public static RooWreakHavoc getInstance() {
@@ -20,7 +20,7 @@ public class RooWreakHavoc implements Runnable {
         }
         return rwh;
     }
-    
+    private RooCatapult rc;
     private RooDriveTrain rdt;
     private RooCatapult rcat;
     private RooForkLift rf;
@@ -34,6 +34,7 @@ public class RooWreakHavoc implements Runnable {
         this.rcat = RooCatapult.getInstance();
         this.rf = RooForkLift.getInstance();
         this.rdt = RooDriveTrain.getInstance();
+        this.rc = RooCatapult.getInstance();
         this.t = new Thread(t);
     }
     
@@ -104,5 +105,10 @@ public class RooWreakHavoc implements Runnable {
     public void run() {
 //        this.run = true;
         startWreakingHavoc();
+    }
+
+    public void smackChip(double speed) {
+        rc.launch();
+        randomForkLift();
     }
 }
