@@ -108,6 +108,7 @@ public class RobotMap {
     public static final String SMARTDASHBOARD_KICKER_DOWN_SPEED_CONSTANT = "Kicker Down Speed: ";
     public static final String SMARTDASHBOARD_SKEW_OUTPUT = "Skew: ";
     public static final String SMARTDASHBOARD_LED_TOGGLE = "Alliance LEDs?";
+    public static final String SMARTDASHBOARD_FORKLIFT_DOWN_DURATION_BEFORE_LAUNCH = "Forklift pre-launch lower duration";
     
     
     

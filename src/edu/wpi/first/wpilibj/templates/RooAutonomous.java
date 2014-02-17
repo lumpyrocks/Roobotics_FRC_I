@@ -37,7 +37,7 @@ public class RooAutonomous {
     
     public void doAutonomous (){
         try{
-            pult.launch();  
+            pult.launch(true);  
             rdt.setBoth(speed);
             Thread.sleep(1000);
             rdt.setBoth(0);
