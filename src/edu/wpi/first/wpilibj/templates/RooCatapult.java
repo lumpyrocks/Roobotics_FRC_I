@@ -37,13 +37,14 @@ public class RooCatapult{
         buttonHeldLastIteration = false;
         buttonHeldNow = false;
         safetyButtonHeldNow = false;
-        SmartDashboard.putNumber("SPEED", 1);
-        SmartDashboard.putNumber("TIME", 400);
+        SmartDashboard.putNumber("Catapult Power", 1);
+        SmartDashboard.putNumber("Catapult Time", 400);
+        SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_FORKLIFT_DOWN_DURATION_BEFORE_LAUNCH, 800);
     }
     
     public void periodic(){
         if (buttonHeldNow == true && buttonHeldLastIteration == false && safetyButtonHeldNow == true){
-            launch();
+            launch(true);
         }
         buttonHeldLastIteration = buttonHeldNow;
         buttonHeldNow = joystick.getRawButton(RobotMap.LAUNCH_BUTTON);
@@ -52,14 +53,17 @@ public class RooCatapult{
         
     }
     
-    public void launch(){
+    public void launch( boolean lowerForklift){
+        if (lowerForklift == true){
+            makeSureForkLiftIsDown ();
+        }
         flatTimerLaunch();
     }
     
     private void makeSureForkLiftIsDown (){
         try{
-            fl.setSpeed(SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_FORKLIFT_DOWN_SPEED_CONSTANT));
-            Thread.sleep (500);
+            fl.setSpeed(-1 * SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_FORKLIFT_DOWN_SPEED_CONSTANT));
+            Thread.sleep ((long) SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_FORKLIFT_DOWN_DURATION_BEFORE_LAUNCH));
         }catch (java.lang.InterruptedException e){
             
         }
@@ -69,8 +73,8 @@ public class RooCatapult{
     private void flatTimerLaunch (){
         //Timer-Based, flat-speed Launch Function, bare minimum
         try{
-            motors.setSpeed(SmartDashboard.getNumber("SPEED"));
-            Thread.sleep((long)SmartDashboard.getNumber("TIME"));
+            motors.setSpeed(SmartDashboard.getNumber("Catapult Power"));
+            Thread.sleep((long)SmartDashboard.getNumber("Catapult Time"));
             motors.setSpeed(0);
         } catch(java.lang.InterruptedException e){
             
