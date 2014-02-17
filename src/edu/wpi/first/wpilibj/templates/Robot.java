@@ -34,6 +34,7 @@ public class Robot extends IterativeRobot {
     AnalogChannel encoderKicker;
     RooAutonomous auton;
     RooWreakHavoc rwh;
+    RooScoreAGoal rsg;
     
     /**
      * This function is run when the robot is first started up and should be
@@ -53,6 +54,7 @@ public class Robot extends IterativeRobot {
         auton = RooAutonomous.getInstance();
         ranger = RooAutoRanger.getInstance();
         rwh = new RooWreakHavoc();
+        rsg = RooScoreAGoal.getInstance();
     }
 
     
@@ -83,6 +85,7 @@ public class Robot extends IterativeRobot {
         pult.periodic();
         kicker.periodic();
         ranger.adjustPosition();
+        rsg.periodic();
         
         SmartDashboard.putNumber("Pult Encoder value", encoderCatapult.getAverageVoltage());
         SmartDashboard.putNumber("Kicker Encoder value", encoderForklift.getAverageVoltage());
