@@ -6,6 +6,7 @@
 
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  * @author Dorian
@@ -34,11 +35,24 @@ public class RooScoreAGoal {
     public void scoreALowGoal(){
         try{
             rdt.setBoth(-1.0);
-            fl.setSpeed(-1.0);
-            kicker.setSpeed(1.0);
-            kicker.setSpeed(-1.0);
-            fl.setSpeed(1.0);
+            Thread.sleep((long)SmartDashboard.getNumber("Backup Stop Time"));
+            rdt.setBoth(0.0);
             
+            fl.setSpeed(-1.0);
+            Thread.sleep((long)SmartDashboard.getNumber("Forklift Down Stop Time"));
+            fl.setSpeed(0.0);
+            
+            kicker.setSpeed(1.0);
+            Thread.sleep((long)SmartDashboard.getNumber("Kicker Up Stop Time"));
+            kicker.setSpeed(0.0);
+            
+            kicker.setSpeed(-1.0);
+            Thread.sleep((long)SmartDashboard.getNumber("Kicker Down Stop Time"));
+            kicker.setSpeed(0);
+            
+            fl.setSpeed(1.0);
+            Thread.sleep((long)SmartDashboard.getNumber("Forklift Up Stop Time"));
+            fl.setSpeed(0);
         }
         catch(java.lang.InterruptedException e){
             
