@@ -89,6 +89,8 @@ public class RooDriveTrain {
             //Set the speeds of the motors according to Speed
             setRight(speed+rightness);
             setLeft(speed-rightness);
+        }else {
+            setBoth (0);
         }
     }
     
