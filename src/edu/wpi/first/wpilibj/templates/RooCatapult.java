@@ -23,6 +23,7 @@ public class RooCatapult{
     
     private RooCatapultMotorPair motors;
     private Joystick joystick;
+    private RooForkLift fl;
     
     private boolean buttonHeldLastIteration;
     private boolean buttonHeldNow;
@@ -32,10 +33,10 @@ public class RooCatapult{
     public RooCatapult(){ 
         motors = new RooCatapultMotorPair(false);
         this.joystick = RooJoystick.getInstance();
+        this.fl = RooForkLift.getInstance();
         buttonHeldLastIteration = false;
         buttonHeldNow = false;
         safetyButtonHeldNow = false;
-        safetyButtonHeldLastIteration = false;
         SmartDashboard.putNumber("SPEED", 1);
         SmartDashboard.putNumber("TIME", 400);
     }

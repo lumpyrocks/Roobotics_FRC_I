@@ -31,6 +31,7 @@ public class RooKicker {
     
     DigitalInput limitSwitch;
     
+    
     private double speed;
     
     //TODO: Figure this shiz out
@@ -47,6 +48,7 @@ public class RooKicker {
     public RooKicker (){
         motor = new Victor (RobotMap.KICKER_MOTOR_CHANNEL);
         this.joystick = RooJoystick.getInstance();
+        
         limitSwitch = new DigitalInput (RobotMap.KICKER_LIMIT_SWITCH);
         SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_KICKER_DOWN_SPEED_CONSTANT, startingDownSpeed);
         SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_KICKER_UP_SPEED_CONSTANT, startingUpSpeed);
@@ -59,7 +61,6 @@ public class RooKicker {
       
         if ((joystick.getRawButton(RobotMap.JOG_KICKER_UP) == true)){
             speed = -1 * SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_KICKER_UP_SPEED_CONSTANT, startingUpSpeed);
-            System.out.println("KICKER");
         }else if (joystick.getRawButton(RobotMap.JOG_KICKER_DOWN)){
             speed = SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_KICKER_DOWN_SPEED_CONSTANT, startingDownSpeed);
         } else{
