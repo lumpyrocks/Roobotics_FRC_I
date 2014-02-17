@@ -67,6 +67,8 @@ public class RooKicker {
             speed = 0;
         }
         setSpeed (speed);
+        
+        //
     }
     
     public void setSpeed (double newSpeed){

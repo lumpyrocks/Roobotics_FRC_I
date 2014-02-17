@@ -40,11 +40,11 @@ public class RooAutoRangerSensorPair {
     
     // Get the distance (in inches) from the left sensor
     public double getLeftDistance() {
-        return voltsToInches(sensor_left.getVoltage());
+        return voltsToInches(sensor_left.getAverageVoltage());
     }
     // Get the distance (in inches) from the right sensor
     public double getRightDistance() {
-        return voltsToInches(sensor_left.getAverageVoltage());
+        return voltsToInches(sensor_right.getAverageVoltage());
     }
     
     // Get the difference between the sensor readings (in inches)
