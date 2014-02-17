@@ -31,6 +31,9 @@ public class RooKicker {
     
     DigitalInput limitSwitch;
     
+    private boolean buttonHeldLastIteration;
+    private boolean buttonHeldNow;
+    private boolean isKickable;
     
     private double speed;
     
@@ -38,17 +41,11 @@ public class RooKicker {
     private final double startingUpSpeed = .7;
     private final double startingDownSpeed = .5;
     
-    public RooKicker (Joystick joystick){
-        motor = new Victor (RobotMap.KICKER_MOTOR_CHANNEL);
-        this.joystick = joystick;
-        SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_KICKER_DOWN_SPEED_CONSTANT, startingDownSpeed);
-        SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_KICKER_UP_SPEED_CONSTANT, startingUpSpeed);
-        
-    }
     public RooKicker (){
         motor = new Victor (RobotMap.KICKER_MOTOR_CHANNEL);
         this.joystick = RooJoystick.getInstance();
-        
+        buttonHeldLastIteration = false;
+        buttonHeldNow = false;
         limitSwitch = new DigitalInput (RobotMap.KICKER_LIMIT_SWITCH);
         SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_KICKER_DOWN_SPEED_CONSTANT, startingDownSpeed);
         SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_KICKER_UP_SPEED_CONSTANT, startingUpSpeed);
@@ -70,6 +67,36 @@ public class RooKicker {
         
         //
     }
+    public void kickCommand (){
+        //checks if the button is pressed so that we can know whether or not to kick
+        if (buttonHeldNow == true && buttonHeldLastIteration == false){
+            fullKick();
+        }
+        buttonHeldLastIteration = buttonHeldNow;
+        buttonHeldNow = joystick.getRawButton(RobotMap.LAUNCH_BUTTON);
+    }
+    
+    public void fullKick (){
+        //Moves the kicker foreward and back all in one motion
+        /*if (isKickable == false){
+        }
+        else if (isKickable == true && joystick.getRawButton(RobotMap.ONE_BUTTON_KICK) == true) {
+            isKickable = false;*/
+        setSpeed(SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_KICKER_UP_SPEED_CONSTANT, startingUpSpeed));
+        try{
+            Thread.sleep((long) SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_KICKER_TIMEOUT));
+        }catch (java.lang.InterruptedException e){
+        }
+        setSpeed(SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_KICKER_DOWN_SPEED_CONSTANT, startingDownSpeed));
+        try{
+            Thread.sleep((long) SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_KICKER_TIMEOUT));    
+        }catch (java.lang.InterruptedException a){
+        }
+          //  isKickable = true;    
+        //}
+    }
+
+        
     
     public void setSpeed (double newSpeed){
         motor.set(newSpeed);

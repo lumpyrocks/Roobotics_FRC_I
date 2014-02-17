@@ -28,7 +28,6 @@ public class RooCatapult{
     private boolean buttonHeldLastIteration;
     private boolean buttonHeldNow;
     private boolean safetyButtonHeldNow;
-    private boolean safetyButtonHeldLastIteration;
     
     public RooCatapult(){ 
         motors = new RooCatapultMotorPair(false);
@@ -48,8 +47,6 @@ public class RooCatapult{
         }
         buttonHeldLastIteration = buttonHeldNow;
         buttonHeldNow = joystick.getRawButton(RobotMap.LAUNCH_BUTTON);
-        safetyButtonHeldLastIteration = safetyButtonHeldNow;
-        safetyButtonHeldNow = joystick.getRawButton(RobotMap.CATAPULT_SAFETY_BUTTON);
         
     }
     

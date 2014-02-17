@@ -48,12 +48,14 @@ public class RobotMap {
     public static final int BUMP_RIGHT_BUTTON = 3;
     public static final int BUMP_FORWARD_BUTTON = 2;
     public static final int BUMP_REVERSE_BUTTON = 1;
+    public static final int ONE_BUTTON_KICK = 9;
     public static final int JOG_FORKLIFT_UP = 11;
     public static final int JOG_FORKLIFT_DOWN = 10;
     public static final int JOG_KICKER_UP = 6;
     public static final int JOG_KICKER_DOWN = 7;
     public static final int USE_AUTORANGER_TO_CORRECT = 8;
     public static final int JOYSTICK_AS_FORKLIFT = 2;
+    public static final int KICKER_TIMEOUT = 500; //Milliseconds
 ////////////////////////////////////////////////////////////////////////////////
     
     // Auto-Ranger Subsystem
@@ -109,6 +111,7 @@ public class RobotMap {
     public static final String SMARTDASHBOARD_SKEW_OUTPUT = "Skew: ";
     public static final String SMARTDASHBOARD_LED_TOGGLE = "Alliance LEDs?";
     public static final String SMARTDASHBOARD_FORKLIFT_DOWN_DURATION_BEFORE_LAUNCH = "Forklift pre-launch lower duration";
+    public static final String SMARTDASHBOARD_KICKER_TIMEOUT = "Time it takes to put kicker down and up in milliseconds";
     
     
     
