@@ -78,7 +78,9 @@ public class RooDriveTrain {
     }
     
     public void joystickDrive(){
-        if (!joystick.getRawButton(2)) {
+        
+        if (!joystick.getRawButton(RobotMap.JOYSTICK_AS_FORKLIFT)) {
+            
             speed = joystick.rooGetY();
             rightness = joystick.rooGetX();
 
@@ -113,17 +115,17 @@ public class RooDriveTrain {
     public void setLeft(double newSpeed) {
         //inverts the output of the motor given that the inverted speed is checked out
         if (SmartDashboard.getBoolean(invertDriveDS) == true){
-            leftPWM.set(-newSpeed);
-        }else{
             leftPWM.set(newSpeed);
+        }else{
+            leftPWM.set(-newSpeed);
         }
     }
     public void setRight(double newSpeed) {
         //inverts the output of the motor given that the inverted speed is checked out
         if (SmartDashboard.getBoolean(invertDriveDS) == true){
-            rightPWM.set(newSpeed);
-        }else{
             rightPWM.set(-newSpeed);
+        }else{
+            rightPWM.set(newSpeed);
         }
     }
     

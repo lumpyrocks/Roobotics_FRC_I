@@ -46,19 +46,21 @@ public class RooForkLift {
         
         //Pretty Simple, set speed to the speed set in the dashboard according to which button is pressed.
       
-        if (joystick.getRawButton(RobotMap.JOG_FORKLIFT_UP) || joystick.getRawButton(2)){
+        if (joystick.getRawButton(RobotMap.JOG_FORKLIFT_UP) || joystick.getRawButton(RobotMap.JOYSTICK_AS_FORKLIFT)){
             if (joystick.getRawButton(RobotMap.JOG_FORKLIFT_UP)) {
+                System.out.println("FL JogDown");
                 speed = SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_FORKLIFT_UP_SPEED_CONSTANT, startingUpSpeed);
             }
             else {
-                speed = joystick.getY();
+                speed = -1 * joystick.getY();
             }
-        }else if (joystick.getRawButton(RobotMap.JOG_FORKLIFT_DOWN) || joystick.getRawButton(2)){
-            if (joystick.getRawButton(2)) {
+        }else if (joystick.getRawButton(RobotMap.JOG_FORKLIFT_DOWN) || joystick.getRawButton(RobotMap.JOYSTICK_AS_FORKLIFT)){
+            if (joystick.getRawButton(RobotMap.JOG_FORKLIFT_UP)) {
+                System.out.println("FL JogUp");
                 speed = -1 * SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_FORKLIFT_DOWN_SPEED_CONSTANT, startingDownSpeed);
             }
             else {
-                speed = joystick.getY();
+                speed = -1 * joystick.getY();
             }
         } else{
             speed = 0;

@@ -6,6 +6,7 @@
 
 package edu.wpi.first.wpilibj.templates;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  * @author henrypitcairn
@@ -35,6 +36,8 @@ public class RooCatapult{
         buttonHeldNow = false;
         safetyButtonHeldNow = false;
         safetyButtonHeldLastIteration = false;
+        SmartDashboard.putNumber("SPEED", 1);
+        SmartDashboard.putNumber("TIME", 400);
     }
     
     public void periodic(){
@@ -56,10 +59,8 @@ public class RooCatapult{
     private void flatTimerLaunch (){
         //Timer-Based, flat-speed Launch Function, bare minimum
         try{
-            motors.setSpeed(.25);
-            Thread.sleep(1000);
-            motors.setSpeed(-.25);
-            Thread.sleep(1000);
+            motors.setSpeed(SmartDashboard.getNumber("SPEED"));
+            Thread.sleep((long)SmartDashboard.getNumber("TIME"));
             motors.setSpeed(0);
         } catch(java.lang.InterruptedException e){
             
