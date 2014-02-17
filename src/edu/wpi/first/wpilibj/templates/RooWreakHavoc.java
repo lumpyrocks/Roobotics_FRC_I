@@ -108,7 +108,7 @@ public class RooWreakHavoc implements Runnable, RooCommonSense {
     }
 
     public void smackChip(double speed) {
-        rc.launch();
+        rc.launch(false);
         randomForkLift();
     }
 }
