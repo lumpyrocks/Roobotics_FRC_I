@@ -39,7 +39,7 @@ public class RooKicker {
     
     //TODO: Figure this shiz out
     private final double startingUpSpeed = .7;
-    private final double startingDownSpeed = .5;
+    private final double startingDownSpeed = .65;
     
     public RooKicker (){
         motor = new Victor (RobotMap.KICKER_MOTOR_CHANNEL);
@@ -49,7 +49,7 @@ public class RooKicker {
         limitSwitch = new DigitalInput (RobotMap.KICKER_LIMIT_SWITCH);
         SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_KICKER_DOWN_SPEED_CONSTANT, startingDownSpeed);
         SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_KICKER_UP_SPEED_CONSTANT, startingUpSpeed);
-        SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_KICKER_TIMEOUT, speed);
+        SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_KICKER_TIMEOUT, 300);
         
     }
     

@@ -81,14 +81,18 @@ public class RooDriveTrain {
         
         if (!joystick.getRawButton(RobotMap.JOYSTICK_AS_FORKLIFT)) {
             
-            speed = joystick.rooGetY();
+            speed = joystick.getZ();
             rightness = joystick.rooGetX();
 
-            double squaredSpeed = Math.abs(speed) * speed;
-            double squaredRightness = Math.abs(rightness) * rightness;
+            //double squaredSpeed = Math.abs(speed) * speed;
+            //double squaredRightness = Math.abs(rightness) * rightness;
+            
+            double cubedSpeed = speed * speed * speed;
+            double cubedRightness = rightness * rightness * rightness;
+            
             //Set the speeds of the motors according to Speed
-            setRight(speed+rightness);
-            setLeft(speed-rightness);
+            setRight(cubedSpeed+cubedRightness);
+            setLeft(cubedSpeed-cubedRightness);
         }else {
             setBoth (0);
         }

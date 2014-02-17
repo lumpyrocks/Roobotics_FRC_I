@@ -22,25 +22,29 @@ public class RooAutonomous {
     
     RooDriveTrain rdt;
     RooCatapult pult;
+    RooScoreAGoal rsg;
     
     private final double speed = 1.0;
     
     public RooAutonomous (RooDriveTrain rdt, RooCatapult pult){
         this.rdt = rdt;
         this.pult = pult;
+       
     }
     
     public RooAutonomous() {
         this.rdt = RooDriveTrain.getInstance();
         this.pult = RooCatapult.getInstance();
+        this.rsg = RooScoreAGoal.getInstance();
     }
     
     public void doAutonomous (){
-        try{
-            pult.launch(true);  
+        try{  
             rdt.setBoth(speed);
-            Thread.sleep(1000);
+            Thread.sleep(5000);
             rdt.setBoth(0);
+            rsg.scoreAHighGoal();
+            
         }catch (java.lang.InterruptedException e){
             
         }

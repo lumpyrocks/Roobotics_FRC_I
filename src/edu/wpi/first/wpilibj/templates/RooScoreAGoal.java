@@ -52,9 +52,13 @@ public class RooScoreAGoal {
         buttonHeldNow = joystick.getRawButton(RobotMap.SCORE_A_LOW_GOAL);
         
     }
+    public void scoreAHighGoal (){
+        
+    }
+    
     public void scoreALowGoal(){
         try{
-            rdt.setBoth(-1.0);
+            rdt.setBoth(.5);
             Thread.sleep((long)SmartDashboard.getNumber("Backup Stop Time"));
             rdt.setBoth(0.0);
             
@@ -62,9 +66,9 @@ public class RooScoreAGoal {
             Thread.sleep((long)SmartDashboard.getNumber("Forklift Down Stop Time"));
             fl.setSpeed(0.0);
             
-            kicker.setSpeed(1.0);
-            Thread.sleep((long)SmartDashboard.getNumber("Kicker Up Stop Time"));
             kicker.setSpeed(-1.0);
+            Thread.sleep((long)SmartDashboard.getNumber("Kicker Up Stop Time"));
+            kicker.setSpeed(1.0);
             Thread.sleep((long)SmartDashboard.getNumber("Kicker Down Stop Time"));
             kicker.setSpeed(0);
             

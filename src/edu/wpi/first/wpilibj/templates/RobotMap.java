@@ -41,21 +41,21 @@ public class RobotMap {
     // Driver Station
     public static final int DRIVE_JOYSTICK_PORT = 1;
     // The catapult safety button
-    public static final int CATAPULT_SAFETY_BUTTON = 3;
+    public static final int CATAPULT_SAFETY_BUTTON = 7;
     //Buttons for Joystick, these numbers are temporary
-    public static final int BUMP_LEFT_BUTTON = 4;
-    public static final int LAUNCH_BUTTON = 1;
-    public static final int BUMP_RIGHT_BUTTON = 3;
-    public static final int BUMP_FORWARD_BUTTON = 2;
-    public static final int BUMP_REVERSE_BUTTON = 1;
-    public static final int ONE_BUTTON_KICK = 9;
-    public static final int JOG_FORKLIFT_UP = 11;
-    public static final int JOG_FORKLIFT_DOWN = 10;
-    public static final int JOG_KICKER_UP = 6;
-    public static final int JOG_KICKER_DOWN = 7;
-    public static final int USE_AUTORANGER_TO_CORRECT = 8;
-    public static final int JOYSTICK_AS_FORKLIFT = 2;
-    public static final int SCORE_A_LOW_GOAL= 4;
+    public static final int BUMP_LEFT_BUTTON = 99; //4;
+    public static final int LAUNCH_BUTTON = 8; //1;
+    public static final int BUMP_RIGHT_BUTTON = 99; //3;
+    public static final int BUMP_FORWARD_BUTTON = 99; // 2;
+    public static final int BUMP_REVERSE_BUTTON = 99; //1;
+    public static final int ONE_BUTTON_KICK = 3; //9;
+    public static final int JOG_FORKLIFT_UP = 99; //11;
+    public static final int JOG_FORKLIFT_DOWN = 99; //10;
+    public static final int JOG_KICKER_UP = 6; //6;
+    public static final int JOG_KICKER_DOWN = 5; //7;
+    public static final int USE_AUTORANGER_TO_CORRECT = 4; //8;
+    public static final int JOYSTICK_AS_FORKLIFT = 99;//2;
+    public static final int SCORE_A_LOW_GOAL= 2; //4;
     public static final int KICKER_TIMEOUT = 500; //Milliseconds
 ////////////////////////////////////////////////////////////////////////////////
     

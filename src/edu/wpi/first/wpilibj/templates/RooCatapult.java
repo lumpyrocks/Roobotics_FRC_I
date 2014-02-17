@@ -42,7 +42,7 @@ public class RooCatapult{
     }
     
     public void periodic(){
-        if (buttonHeldNow == true && buttonHeldLastIteration == false && safetyButtonHeldNow == true){
+        if (buttonHeldNow == true && buttonHeldLastIteration == false && joystick.getRawButton(RobotMap.CATAPULT_SAFETY_BUTTON) == true ){
             launch(true);
         }
         buttonHeldLastIteration = buttonHeldNow;
