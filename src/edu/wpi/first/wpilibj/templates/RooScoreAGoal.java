@@ -31,4 +31,17 @@ public class RooScoreAGoal {
         pult = RooCatapult.getInstance();
         rdt = RooDriveTrain.getInstance();
     }
+    public void scoreALowGoal(){
+        try{
+            rdt.setBoth(-1.0);
+            fl.setSpeed(-1.0);
+            kicker.setSpeed(1.0);
+            kicker.setSpeed(-1.0);
+            fl.setSpeed(1.0);
+            
+        }
+        catch(java.lang.InterruptedException e){
+            
+        }
+    }
 }
