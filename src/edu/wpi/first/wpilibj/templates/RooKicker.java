@@ -35,7 +35,7 @@ public class RooKicker {
     private boolean buttonHeldNow;
     private boolean isKickable;
     
-    private double speed;
+    private double speed = 250;
     
     //TODO: Figure this shiz out
     private final double startingUpSpeed = .7;
@@ -49,6 +49,7 @@ public class RooKicker {
         limitSwitch = new DigitalInput (RobotMap.KICKER_LIMIT_SWITCH);
         SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_KICKER_DOWN_SPEED_CONSTANT, startingDownSpeed);
         SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_KICKER_UP_SPEED_CONSTANT, startingUpSpeed);
+        SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_KICKER_TIMEOUT, speed);
         
     }
     
@@ -70,10 +71,11 @@ public class RooKicker {
     public void kickCommand (){
         //checks if the button is pressed so that we can know whether or not to kick
         if (buttonHeldNow == true && buttonHeldLastIteration == false){
+            System.out.println("Button is being held!");
             fullKick();
         }
         buttonHeldLastIteration = buttonHeldNow;
-        buttonHeldNow = joystick.getRawButton(RobotMap.LAUNCH_BUTTON);
+        buttonHeldNow = joystick.getRawButton(RobotMap.ONE_BUTTON_KICK);
     }
     
     public void fullKick (){
@@ -83,11 +85,13 @@ public class RooKicker {
         else if (isKickable == true && joystick.getRawButton(RobotMap.ONE_BUTTON_KICK) == true) {
             isKickable = false;*/
         setSpeed(SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_KICKER_UP_SPEED_CONSTANT, startingUpSpeed));
+        System.out.println("Speed has been set up");
         try{
             Thread.sleep((long) SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_KICKER_TIMEOUT));
         }catch (java.lang.InterruptedException e){
         }
-        setSpeed(SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_KICKER_DOWN_SPEED_CONSTANT, startingDownSpeed));
+        setSpeed(SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_KICKER_DOWN_SPEED_CONSTANT, -1*startingDownSpeed));
+        System.out.println("Speed has been set down");
         try{
             Thread.sleep((long) SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_KICKER_TIMEOUT));    
         }catch (java.lang.InterruptedException a){
