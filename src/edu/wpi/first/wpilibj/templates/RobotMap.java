@@ -55,6 +55,7 @@ public class RobotMap {
     public static final int JOG_KICKER_DOWN = 7;
     public static final int USE_AUTORANGER_TO_CORRECT = 8;
     public static final int JOYSTICK_AS_FORKLIFT = 2;
+    public static final int SCORE_A_LOW_GOAL= 4;
     public static final int KICKER_TIMEOUT = 500; //Milliseconds
 ////////////////////////////////////////////////////////////////////////////////
     

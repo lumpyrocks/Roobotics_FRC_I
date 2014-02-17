@@ -84,7 +84,7 @@ public class RooKicker {
         }
         else if (isKickable == true && joystick.getRawButton(RobotMap.ONE_BUTTON_KICK) == true) {
             isKickable = false;*/
-        setSpeed(SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_KICKER_UP_SPEED_CONSTANT, startingUpSpeed));
+        setSpeed(-1 * SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_KICKER_UP_SPEED_CONSTANT, startingUpSpeed));
         System.out.println("Speed has been set up");
         try{
             Thread.sleep((long) SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_KICKER_TIMEOUT));

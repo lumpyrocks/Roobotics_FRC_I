@@ -21,6 +21,7 @@ public class RooScoreAGoal {
         return rsg;
     }
     
+    private RooJoystick joystick;
     private RooKicker kicker;
     private RooForkLift fl;
     private RooCatapult pult;
@@ -29,6 +30,7 @@ public class RooScoreAGoal {
     private boolean buttonHeldLastIteration;
     
     private RooScoreAGoal (){
+        joystick = RooJoystick.getInstance();
         kicker = RooKicker.getInstance();
         fl = RooForkLift.getInstance();
         pult = RooCatapult.getInstance();
@@ -47,7 +49,7 @@ public class RooScoreAGoal {
             scoreALowGoal();
         }
         buttonHeldLastIteration = buttonHeldNow;
-        buttonHeldNow = joystick.getRawButton(RobotMap.LAUNCH_BUTTON);
+        buttonHeldNow = joystick.getRawButton(RobotMap.SCORE_A_LOW_GOAL);
         
     }
     public void scoreALowGoal(){
