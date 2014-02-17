@@ -55,7 +55,7 @@ public class RooKicker {
     public void periodic (){
         
         //Pretty Simple, set speed to the speed set in the dashboard according to which button is pressed.
-      
+        kickCommand ();
         if ((joystick.getRawButton(RobotMap.JOG_KICKER_UP) == true)){
             speed = -1 * SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_KICKER_UP_SPEED_CONSTANT, startingUpSpeed);
         }else if (joystick.getRawButton(RobotMap.JOG_KICKER_DOWN)){
@@ -92,6 +92,7 @@ public class RooKicker {
             Thread.sleep((long) SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_KICKER_TIMEOUT));    
         }catch (java.lang.InterruptedException a){
         }
+        setSpeed (0);
           //  isKickable = true;    
         //}
     }
