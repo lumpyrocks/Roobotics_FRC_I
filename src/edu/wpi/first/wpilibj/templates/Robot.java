@@ -29,12 +29,14 @@ public class Robot extends IterativeRobot {
     RooKicker kicker;
     RooCosmetics cosmo;
     RooAutoRanger ranger;
-    AnalogChannel encoderCatapult;
+    Encoder encoderCatapult;
     AnalogChannel encoderForklift;
     AnalogChannel encoderKicker;
     RooAutonomous auton;
     RooWreakHavoc rwh;
     RooScoreAGoal rsg;
+    DigitalInput dib;
+    DigitalInput dia;
     
     /**
      * This function is run when the robot is first started up and should be
@@ -48,13 +50,17 @@ public class Robot extends IterativeRobot {
         pult = RooCatapult.getInstance();
         kicker = RooKicker.getInstance();
         cosmo = RooCosmetics.getInstance();
-        encoderCatapult = new AnalogChannel(RobotMap.ENCODER_CATAPULT);
-        encoderKicker = new AnalogChannel(RobotMap.ENCODER_KICKER);
-        encoderForklift = new AnalogChannel(RobotMap.ENCODER_FORKLIFT);
+        //dia = new DigitalInput (1);
+        //dib = new DigitalInput (2);
+        //encoderCatapult = new Encoder(dia, dib);
+        //encoderKicker = new AnalogChannel(RobotMap.ENCODER_KICKER);
+        //encoderForklift = new AnalogChannel(RobotMap.ENCODER_FORKLIFT);
         auton = RooAutonomous.getInstance();
         ranger = RooAutoRanger.getInstance();
         rwh = new RooWreakHavoc();
         rsg = RooScoreAGoal.getInstance();
+                
+        //encoderCatapult.start();
     }
 
     
@@ -87,8 +93,11 @@ public class Robot extends IterativeRobot {
         ranger.adjustPosition();
         rsg.periodic();
         
-        SmartDashboard.putNumber("Pult Encoder value", encoderCatapult.getAverageVoltage());
-        SmartDashboard.putNumber("Kicker Encoder value", encoderForklift.getAverageVoltage());
+        
+        //SmartDashboard.putNumber("Pult Encoder value (distance)", encoderCatapult.getDistance());
+        //SmartDashboard.putNumber("Pult Encoder value", encoderCatapult.get());
+        //SmartDashboard.putNumber("POTENTIOMETER VALUE", encoderKicker.getAverageVoltage());
+        
     }
     
     

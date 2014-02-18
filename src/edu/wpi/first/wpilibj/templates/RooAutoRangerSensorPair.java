@@ -25,6 +25,7 @@ public class RooAutoRangerSensorPair {
     public RooAutoRangerSensorPair() {
         sensor_right = new AnalogChannel(RobotMap.ULTRASONIC_RANGER_CHANNE_RIGHT);
         sensor_left = new AnalogChannel(RobotMap.ULTRASONIC_RANGER_CHANNEL_LEFT);
+        System.out.println("Sensors Created");
     }
     
     // Convert voltage to inches

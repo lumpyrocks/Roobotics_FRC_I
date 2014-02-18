@@ -61,7 +61,7 @@ public class RooForkLift {
 //                speed = -1 * joystick.getY();
 //            }
 //        } else{
-            speed = joystick.getThrottle();
+            speed = -1 * joystick.getRawAxis(5);
 //        }
         setSpeed (speed);
     }
