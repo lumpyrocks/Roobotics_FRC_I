@@ -26,25 +26,49 @@ public class RooCosmetics {
     private Solenoid redLEDs;
     private Solenoid greenLEDs;
     private Solenoid blueLEDs;
+    private Solenoid ledStrip;
     private DriverStation ds;
     
     
     public RooCosmetics (){
         //A class for all of the sexy parts of our robot
         //using Driverstation to get which alliance the Team is on
+        ledStrip = new Solenoid (RobotMap.LED_TOGGLE_SOLENOID_CHANNEL);
         redLEDs = new Solenoid (RobotMap.RED_LED_SOLENOID_CHANNEL);
         greenLEDs = new Solenoid (RobotMap.GREEN_LED_SOLENOID_CHANNEL);
         blueLEDs = new Solenoid (RobotMap.BLUE_LED_SOLENOID_CHANNEL);
         ds = DriverStation.getInstance();
         SmartDashboard.putBoolean(RobotMap.SMARTDASHBOARD_LED_TOGGLE, true);
+        SmartDashboard.putBoolean("RED?", true);
+        SmartDashboard.putBoolean("BLUE?", true);
+        SmartDashboard.putBoolean("GREEN?", true);
+        ledStrip.set(SmartDashboard.getBoolean(RobotMap.SMARTDASHBOARD_LED_TOGGLE));
         
     }
     
-    public void init(){
+    public void updateLights(){
         //Happens once at the onset of each seciton of the game (autoninit and teleopinit)
-        if (SmartDashboard.getBoolean(RobotMap.SMARTDASHBOARD_LED_TOGGLE) == true){
-            setLEDsToAllianceColors ();
-        }
+        ledStrip.set(SmartDashboard.getBoolean(RobotMap.SMARTDASHBOARD_LED_TOGGLE));
+        
+        //DELETEMEPLEASE();
+        setLEDsToAllianceColors ();
+        
+    }
+    
+    public void setGreen(){
+        //ledStrip.set(SmartDashboard.getBoolean(RobotMap.SMARTDASHBOARD_LED_TOGGLE));
+        redLEDs.set(false);
+        greenLEDs.set(true);
+        System.out.println("================================================================================");
+        System.out.println("Set Green");
+        System.out.println("===============================================================================");
+        blueLEDs.set(false);
+    }
+    
+    private void DELETEMEPLEASE (){
+        redLEDs.set(SmartDashboard.getBoolean("RED?"));
+        blueLEDs.set(SmartDashboard.getBoolean("BLUE?"));
+        greenLEDs.set(SmartDashboard.getBoolean("GREEN?"));
     }
     private void setLEDsToAllianceColors (){
         //Should set the LEDs to Red if alliance is Red, BLue if blue, and green if neither.
