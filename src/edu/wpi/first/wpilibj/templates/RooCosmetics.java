@@ -26,14 +26,12 @@ public class RooCosmetics {
     private Solenoid redLEDs;
     private Solenoid greenLEDs;
     private Solenoid blueLEDs;
-    private Solenoid ledStrip;
     private DriverStation ds;
     
     
     public RooCosmetics (){
         //A class for all of the sexy parts of our robot
         //using Driverstation to get which alliance the Team is on
-        ledStrip = new Solenoid (RobotMap.LED_TOGGLE_SOLENOID_CHANNEL);
         redLEDs = new Solenoid (RobotMap.RED_LED_SOLENOID_CHANNEL);
         greenLEDs = new Solenoid (RobotMap.GREEN_LED_SOLENOID_CHANNEL);
         blueLEDs = new Solenoid (RobotMap.BLUE_LED_SOLENOID_CHANNEL);
@@ -42,17 +40,19 @@ public class RooCosmetics {
         SmartDashboard.putBoolean("RED?", true);
         SmartDashboard.putBoolean("BLUE?", true);
         SmartDashboard.putBoolean("GREEN?", true);
-        ledStrip.set(SmartDashboard.getBoolean(RobotMap.SMARTDASHBOARD_LED_TOGGLE));
         
     }
     
     public void updateLights(){
-        //Happens once at the onset of each seciton of the game (autoninit and teleopinit)
-        ledStrip.set(SmartDashboard.getBoolean(RobotMap.SMARTDASHBOARD_LED_TOGGLE));
-        
-        //DELETEMEPLEASE();
-        setLEDsToAllianceColors ();
-        
+        if (!SmartDashboard.getBoolean(RobotMap.SMARTDASHBOARD_LED_TOGGLE)){
+            //green LEDs are reversed, so turning them true will turn them off
+            greenLEDs.set (true);
+            redLEDs.set (false);
+            blueLEDs.set (false);
+        }else{
+            //DELETEMEPLEASE();
+            setLEDsToAllianceColors ();
+        }
     }
     
     public void setGreen(){
@@ -75,15 +75,15 @@ public class RooCosmetics {
         Alliance color = ds.getAlliance();
         switch (color.value){
             case Alliance.kRed_val :    redLEDs.set(true);
-                                        greenLEDs.set(false);
+                                        greenLEDs.set(true);
                                         blueLEDs.set(false);
                                         break;
             case Alliance.kBlue_val :   redLEDs.set(false);
-                                        greenLEDs.set(false);
+                                        greenLEDs.set(true);
                                         blueLEDs.set(true);
                                         break;
             default :                   redLEDs.set(false);
-                                        greenLEDs.set(true);
+                                        greenLEDs.set(false);
                                         blueLEDs.set(false);
                                         break;
         }
