@@ -47,7 +47,6 @@ public class Robot extends IterativeRobot {
         pult = RooCatapult.getInstance();
         kicker = RooKicker.getInstance();
         cosmo = RooCosmetics.getInstance();
-        cosmo.setGreen();
         auton = RooAutonomous.getInstance();
         ranger = RooAutoRanger.getInstance();
         rwh = new RooWreakHavoc();
