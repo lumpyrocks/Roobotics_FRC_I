@@ -3,7 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
+// Dorian what the heck are you doing? STOP with the ridiculously ambigous file names and class names or you
+// Will be kicked out from the penial rocks foundation.
 package edu.wpi.first.wpilibj.templates;
 
 /**
