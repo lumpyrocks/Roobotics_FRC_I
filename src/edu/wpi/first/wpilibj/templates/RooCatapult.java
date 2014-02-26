@@ -24,10 +24,12 @@ public class RooCatapult{
     private RooCatapultMotorPair motors;
     private Joystick joystick;
     private RooForkLift fl;
+    private RooCatapultPotentiometer pultPot;
     
     private boolean buttonHeldLastIteration;
     private boolean buttonHeldNow;
     private boolean safetyButtonHeldNow;
+    private boolean potOverMaxValue;
     
     public RooCatapult(){ 
         motors = new RooCatapultMotorPair(false);
@@ -36,9 +38,12 @@ public class RooCatapult{
         buttonHeldLastIteration = false;
         buttonHeldNow = false;
         safetyButtonHeldNow = false;
+        pultPot = RooCatapultPotentiometer.getInstance();
         SmartDashboard.putNumber("Catapult Power", 1);
         SmartDashboard.putNumber("Catapult Time", 400);
         SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_FORKLIFT_DOWN_DURATION_BEFORE_LAUNCH, 800);
+        SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_PULTPOT_MAX_ANGLE, 157);
+        SmartDashboard.putBoolean("TEST POT TOO HIGH", false);
     }
     
     public void periodic(){
@@ -47,7 +52,6 @@ public class RooCatapult{
         }
         buttonHeldLastIteration = buttonHeldNow;
         buttonHeldNow = joystick.getRawButton(RobotMap.LAUNCH_BUTTON);
-        
     }
     
     public void launch( boolean lowerForklift){
@@ -67,6 +71,24 @@ public class RooCatapult{
         fl.setSpeed(0.0);
         
     }
+    
+    private void potLaunch (){
+        //For loop to check when pot goes but also as a way of making sure that 
+       
+        for (int i = 0; (i <= SmartDashboard.getNumber("Catapult Time")/10); i++){
+            try{
+                
+                if (pultPot.getAngle() >= SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_PULTPOT_MAX_ANGLE)){
+                    
+                }
+                Thread.sleep(10);
+            }
+            catch (InterruptedException e){
+                
+            }
+        }
+    }
+    
     private void flatTimerLaunch (){
         //Timer-Based, flat-speed Launch Function, bare minimum
         try{

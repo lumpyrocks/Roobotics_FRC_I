@@ -108,7 +108,7 @@ public class RobotMap {
     public static final String SMARTDASHBOARD_LED_TOGGLE = "Alliance LEDs?";
     public static final String SMARTDASHBOARD_FORKLIFT_DOWN_DURATION_BEFORE_LAUNCH = "Forklift pre-launch lower duration";
     public static final String SMARTDASHBOARD_KICKER_TIMEOUT = "Time it takes to put kicker down and up in milliseconds";
-    
+    public static final String SMARTDASHBOARD_PULTPOT_MAX_ANGLE = "Pult Max Angle?";
     
     
     
