@@ -25,6 +25,7 @@ public class Robot extends IterativeRobot {
     RooJoystick joystick;
     RooDriveTrain rdt;
     RooForkLift fl;
+    RooCatapultPotentiometer pultPot;
     RooCatapult pult;
     RooKicker kicker;
     RooCosmetics cosmo;
@@ -41,9 +42,9 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
         joystick = RooJoystick.getInstance();
-        pot = new AnalogChannel(3);
         rdt = RooDriveTrain.getInstance();
         fl = RooForkLift.getInstance();
+        pultPot = RooCatapultPotentiometer.getInstance();
         pult = RooCatapult.getInstance();
         kicker = RooKicker.getInstance();
         cosmo = RooCosmetics.getInstance();
@@ -86,7 +87,8 @@ public class Robot extends IterativeRobot {
         rsg.periodic();
         
         
-        SmartDashboard.putNumber("POTENTIOMETER VALUE", pot.getAverageVoltage());
+        SmartDashboard.putNumber("POTENTIOMETER VALUE", pultPot.getVoltage());
+        SmartDashboard.putNumber("POTENTIOMETER ANGLE", pultPot.getAngle());
         
     }
     

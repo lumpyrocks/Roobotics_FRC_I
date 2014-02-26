@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.AnalogChannel;
  *
  * @author henrypitcairn
  */
-public class RooAutoRangerSensorPair {
+public class RooAutoRangerSensorPair implements Runnable {
     private static final double VOLTS_PER_INCH = 0.009766;
     private AnalogChannel sensor_right;
     private AnalogChannel sensor_left;
@@ -57,5 +57,9 @@ public class RooAutoRangerSensorPair {
     public double getAverage() {
         double average = (getLeftDistance()+getRightDistance())/2;
         return average;
+    }
+
+    public void run() {
+        
     }
 }
