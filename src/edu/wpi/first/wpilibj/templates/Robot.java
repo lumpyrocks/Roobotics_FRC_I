@@ -29,14 +29,11 @@ public class Robot extends IterativeRobot {
     RooKicker kicker;
     RooCosmetics cosmo;
     RooAutoRanger ranger;
-    Encoder encoderCatapult;
-    AnalogChannel encoderForklift;
-    AnalogChannel encoderKicker;
     RooAutonomous auton;
     RooWreakHavoc rwh;
     RooScoreAGoal rsg;
-    DigitalInput dib;
-    DigitalInput dia;
+    AnalogChannel pot;
+
     
     /**
      * This function is run when the robot is first started up and should be
@@ -44,28 +41,23 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
         joystick = RooJoystick.getInstance();
-
+        pot = new AnalogChannel(3);
         rdt = RooDriveTrain.getInstance();
         fl = RooForkLift.getInstance();
         pult = RooCatapult.getInstance();
         kicker = RooKicker.getInstance();
         cosmo = RooCosmetics.getInstance();
-        //dia = new DigitalInput (1);
-        //dib = new DigitalInput (2);
-        //encoderCatapult = new Encoder(dia, dib);
-        //encoderKicker = new AnalogChannel(RobotMap.ENCODER_KICKER);
-        //encoderForklift = new AnalogChannel(RobotMap.ENCODER_FORKLIFT);
         auton = RooAutonomous.getInstance();
         ranger = RooAutoRanger.getInstance();
         rwh = new RooWreakHavoc();
         rsg = RooScoreAGoal.getInstance();
-                
+        
         //encoderCatapult.start();
     }
 
     
     public void autonomousInit (){
-        cosmo.init();
+        cosmo.updateLights();
         auton.doAutonomous();
         
     }
@@ -77,7 +69,7 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit () {
-        cosmo.init();
+        cosmo.updateLights();
     }
     
     /**
@@ -94,9 +86,7 @@ public class Robot extends IterativeRobot {
         rsg.periodic();
         
         
-        //SmartDashboard.putNumber("Pult Encoder value (distance)", encoderCatapult.getDistance());
-        //SmartDashboard.putNumber("Pult Encoder value", encoderCatapult.get());
-        //SmartDashboard.putNumber("POTENTIOMETER VALUE", encoderKicker.getAverageVoltage());
+        SmartDashboard.putNumber("POTENTIOMETER VALUE", pot.getAverageVoltage());
         
     }
     

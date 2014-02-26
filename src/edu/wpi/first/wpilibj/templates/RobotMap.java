@@ -73,9 +73,9 @@ public class RobotMap {
     public static final int RANGE_BEACON_YELLOW_CHANNEL = 2;
     public static final int RANGE_BEACON_GREEN_CHANNEL = 3;
     
-    public static final int RED_LED_SOLENOID_CHANNEL = 1;
+    public static final int RED_LED_SOLENOID_CHANNEL = 2;
     public static final int BLUE_LED_SOLENOID_CHANNEL = 3;
-    public static final int GREEN_LED_SOLENOID_CHANNEL = 2;
+    public static final int GREEN_LED_SOLENOID_CHANNEL = 1;
 ////////////////////////////////////////////////////////////////////////////////
     
     // Launcher Subsystem
@@ -92,13 +92,7 @@ public class RobotMap {
     // Digital Sidecar PWM outputs
     public static final int KICKER_MOTOR_CHANNEL = 7;
     public static final int FORKLIFT_MOTOR_CHANNEL = 8;
-    // Digital Sidecar GPIO Inputs
-    public static final int KICKER_ENCODER_A_CHANNEL = 6;
-    public static final int KICKER_ENCODER_B_CHANNEL = 7;
-    public static final int KICKER_ENCODER_MODULE = 2;
-    public static final int FORKLIFT_ENCODER_A_CHANNEL = 8;
-    public static final int FORKLIFT_ENCODER_B_CHANNEL = 9;
-    public static final int FORKLIFT_ENCODER_MODULE = 3;
+
 ////////////////////////////////////////////////////////////////////////////////
     // Keys Used for the Smart Dashboard
     public static final String SMARTDASHBOARD_INVERTED_DRIVE = "Inverted Controls?";
