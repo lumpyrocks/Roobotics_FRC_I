@@ -28,6 +28,8 @@ public class RooScoreAGoal {
     private RooDriveTrain rdt;
     private boolean buttonHeldNow;
     private boolean buttonHeldLastIteration;
+    private boolean buttonHeldAtTheMoment;
+    private boolean buttonHeldLastTime;
     
     private RooScoreAGoal (){
         joystick = RooJoystick.getInstance();
@@ -42,17 +44,21 @@ public class RooScoreAGoal {
         SmartDashboard.putNumber("Forklift Up Stop Time",500);
         buttonHeldNow = false;
         buttonHeldLastIteration = false;
+        buttonHeldAtTheMoment = false;
+        buttonHeldLastTime = false;
     }
     
     public void periodic(){
         if (buttonHeldNow == true && buttonHeldLastIteration == false){
             scoreALowGoal();
         }
+        scoreAHighGoal();
         buttonHeldLastIteration = buttonHeldNow;
         buttonHeldNow = joystick.getRawButton(RobotMap.SCORE_A_LOW_GOAL);
         
     }
     public void scoreAHighGoal (){
+      if (buttonHeldAtTheMoment == true && buttonHeldLastTime == false && joystick.getRawButton(RobotMap.CATAPULT_SAFETY_BUTTON) == true){
       try{   
         RooAutoRangerSensorPair us = RooAutoRangerSensorPair.getInstance();
         rdt.setBoth(1);
@@ -65,6 +71,9 @@ public class RooScoreAGoal {
         }
         catch(java.lang.InterruptedException e){   
         } 
+      buttonHeldLastTime = buttonHeldAtTheMoment;
+      buttonHeldAtTheMoment = joystick.getRawButton(RobotMap.SCORE_HIGH_GOAL);
+      }
     }
     
     public void scoreALowGoal(){

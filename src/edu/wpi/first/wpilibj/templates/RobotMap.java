@@ -57,6 +57,7 @@ public class RobotMap {
     public static final int JOYSTICK_AS_FORKLIFT = 99;//2;
     public static final int SCORE_A_LOW_GOAL= 2; //4;
     public static final int KICKER_TIMEOUT = 500; //Milliseconds
+    public static final int SCORE_HIGH_GOAL = 10;
 ////////////////////////////////////////////////////////////////////////////////
     
     // Auto-Ranger Subsystem
