@@ -28,8 +28,8 @@ public class RooAutoRangerSensorPair implements Runnable {
     }
     public RooAutoRangerSensorPair() {
         getStuff = new SexyAnimal();
-        sensor_right = new Ultrasonic(0,0);
-        sensor_left = new Ultrasonic(0,0);
+        sensor_right = new Ultrasonic(13,14);
+        sensor_left = new Ultrasonic(12,14);
         System.out.println("Sensors Created");
     }
     
