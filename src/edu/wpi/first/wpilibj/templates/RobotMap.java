@@ -35,6 +35,9 @@ public class RobotMap {
    
     //Digital IO
     public static final int KICKER_LIMIT_SWITCH = 1;
+    public static final int ultrasonicPingChannel = 13;
+    public static final int ultrasonicReadChannelLeft = 12;
+    public static final int ultrasonicReadChannelRight = 11;
     
     // Analog Breakout
     public static final int GYRO_CHANNEL = 1;
