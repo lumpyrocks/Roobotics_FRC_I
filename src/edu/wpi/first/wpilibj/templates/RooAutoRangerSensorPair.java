@@ -1,6 +1,6 @@
 package edu.wpi.first.wpilibj.templates;
 
-import edu.wpi.first.wpilibj.AnalogChannel;
+import edu.wpi.first.wpilibj.DigitalInput;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,8 +13,8 @@ import edu.wpi.first.wpilibj.AnalogChannel;
  */
 public class RooAutoRangerSensorPair implements Runnable {
     private static final double VOLTS_PER_INCH = 0.009766;
-    private AnalogChannel sensor_right;
-    private AnalogChannel sensor_left;
+    private DigitalInput sensor_right;
+    private DigitalInput sensor_left;
     private SexyAnimal getStuff;
     private double leftDistance;
     private double rightDistance;
@@ -28,8 +28,8 @@ public class RooAutoRangerSensorPair implements Runnable {
     }
     public RooAutoRangerSensorPair() {
         getStuff = new SexyAnimal();
-        sensor_right = new AnalogChannel(RobotMap.ULTRASONIC_RANGER_CHANNE_RIGHT);
-        sensor_left = new AnalogChannel(RobotMap.ULTRASONIC_RANGER_CHANNEL_LEFT);
+        sensor_right = new DigitalInput(RobotMap.ULTRASONIC_RANGER_CHANNE_RIGHT);
+        sensor_left = new DigitalInput(RobotMap.ULTRASONIC_RANGER_CHANNEL_LEFT);
         System.out.println("Sensors Created");
     }
     
