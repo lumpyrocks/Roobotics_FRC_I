@@ -12,8 +12,6 @@ package edu.wpi.first.wpilibj.templates;
  */
 public class SexyAnimal {
     public SexyAnimal() {
-        while (true) {
-            System.out.println("SEXY ANIMALSBGR!HFJ!KDIKXTJUyfhg");
-        }
+        
     }
 }

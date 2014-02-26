@@ -47,7 +47,7 @@ public class RooAutoRangerSensorPair implements Runnable {
         return leftDistance;
     }
     public void updateLeftDistance() {
-        leftDistance = voltsToInches(sensor_left.getAverageVoltage());
+        //leftDistance = voltsToInches(sensor_left.getAverageVoltage());
     }
     // Get the distance (in inches) from the right sensor
     public double getRightDistance() {
@@ -55,7 +55,7 @@ public class RooAutoRangerSensorPair implements Runnable {
         return rightDistance;
     }
     public void updateRightDistance() {
-        rightDistance = voltsToInches(sensor_right.getAverageVoltage());
+        //rightDistance = voltsToInches(sensor_right.getAverageVoltage());
     }
     public void updateBoth() {
         run();
