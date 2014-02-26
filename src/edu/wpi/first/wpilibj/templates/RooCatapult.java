@@ -44,9 +44,11 @@ public class RooCatapult{
         SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_FORKLIFT_DOWN_DURATION_BEFORE_LAUNCH, 800);
         SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_PULTPOT_MAX_ANGLE, 157);
         SmartDashboard.putBoolean("TEST POT TOO HIGH", false);
+        updatePotOverMaxValue();
     }
     
     public void periodic(){
+        updatePotOverMaxValue();
         if (buttonHeldNow == true && buttonHeldLastIteration == false && joystick.getRawButton(RobotMap.CATAPULT_SAFETY_BUTTON) == true ){
             launch(true);
         }
@@ -58,7 +60,8 @@ public class RooCatapult{
         if (lowerForklift == true){
             makeSureForkLiftIsDown ();
         }
-        flatTimerLaunch();
+        potLaunch();
+        //flatTimerLaunch();
     }
     
     private void makeSureForkLiftIsDown (){
@@ -72,21 +75,25 @@ public class RooCatapult{
         
     }
     
+    private void updatePotOverMaxValue (){
+        potOverMaxValue = (pultPot.getAngle() >= SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_PULTPOT_MAX_ANGLE));
+       SmartDashboard.putBoolean("TEST POT TOO HIGH", potOverMaxValue);
+    }
+    
     private void potLaunch (){
         //For loop to check when pot goes but also as a way of making sure that 
-       
-        for (int i = 0; (i <= SmartDashboard.getNumber("Catapult Time")/10); i++){
+       motors.setSpeed(SmartDashboard.getNumber("Catapult Power"));
+        for (int i = 0; (i <= SmartDashboard.getNumber("Catapult Time")/10) && !potOverMaxValue; i++){
+            updatePotOverMaxValue();
             try{
-                
-                if (pultPot.getAngle() >= SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_PULTPOT_MAX_ANGLE)){
-                    
-                }
                 Thread.sleep(10);
             }
             catch (InterruptedException e){
                 
             }
+            System.out.println("jah");
         }
+        motors.setSpeed(0);
     }
     
     private void flatTimerLaunch (){
