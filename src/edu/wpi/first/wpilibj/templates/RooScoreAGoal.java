@@ -53,7 +53,18 @@ public class RooScoreAGoal {
         
     }
     public void scoreAHighGoal (){
-        
+      try{   
+        RooAutoRangerSensorPair us = RooAutoRangerSensorPair.getInstance();
+        rdt.setBoth(1);
+        while(us.voltsToInches(us.getAverage()) > SmartDashboard.getNumber("Distance from Automonous Goal")){
+                Thread.sleep(10);
+        }
+        rdt.setBoth(0);
+        Thread.sleep(10);
+        pult.launch(true);
+        }
+        catch(java.lang.InterruptedException e){   
+        } 
     }
     
     public void scoreALowGoal(){

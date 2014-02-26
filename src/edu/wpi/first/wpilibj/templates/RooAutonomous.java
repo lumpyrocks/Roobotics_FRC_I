@@ -1,5 +1,6 @@
 package edu.wpi.first.wpilibj.templates;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -29,6 +30,7 @@ public class RooAutonomous {
     public RooAutonomous (RooDriveTrain rdt, RooCatapult pult){
         this.rdt = rdt;
         this.pult = pult;
+        SmartDashboard.putNumber("Distance from Autonomous Goal", 1);
        
     }
     
@@ -46,6 +48,23 @@ public class RooAutonomous {
             rsg.scoreAHighGoal();
             
         }catch (java.lang.InterruptedException e){
+            
+        }
+    }
+    
+    public void doAutonomousSonic(){
+        try{   
+        RooAutoRangerSensorPair us = RooAutoRangerSensorPair.getInstance();
+        rdt.setBoth(speed);
+        while(us.voltsToInches(us.getAverage()) > SmartDashboard.getNumber("Distance from Automonous Goal")){
+                Thread.sleep(10);
+        }
+        rdt.setBoth(0);
+        Thread.sleep(10);
+        pult.launch(true);
+
+        }
+        catch(java.lang.InterruptedException e){
             
         }
     }
