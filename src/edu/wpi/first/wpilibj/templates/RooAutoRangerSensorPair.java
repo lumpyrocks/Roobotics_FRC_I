@@ -1,6 +1,6 @@
 package edu.wpi.first.wpilibj.templates;
 
-import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Ultrasonic;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,8 +13,8 @@ import edu.wpi.first.wpilibj.DigitalInput;
  */
 public class RooAutoRangerSensorPair implements Runnable {
     private static final double VOLTS_PER_INCH = 0.009766;
-    private DigitalInput sensor_right;
-    private DigitalInput sensor_left;
+    private UltraSonic sensor_right;
+    private UltraSonic sensor_left;
     private SexyAnimal getStuff;
     private double leftDistance;
     private double rightDistance;
@@ -28,8 +28,8 @@ public class RooAutoRangerSensorPair implements Runnable {
     }
     public RooAutoRangerSensorPair() {
         getStuff = new SexyAnimal();
-        sensor_right = new DigitalInput(RobotMap.ULTRASONIC_RANGER_CHANNE_RIGHT);
-        sensor_left = new DigitalInput(RobotMap.ULTRASONIC_RANGER_CHANNEL_LEFT);
+        sensor_right = new Ultrasonic(0,0);
+        sensor_left = new Ultrasonic(0,0);
         System.out.println("Sensors Created");
     }
     
@@ -47,7 +47,7 @@ public class RooAutoRangerSensorPair implements Runnable {
         return leftDistance;
     }
     public void updateLeftDistance() {
-        leftDistance = voltsToInches(sensor_left.getAverageVoltage());
+        leftDistance = voltsToInches(sensor_left.getDistanceUnits());
     }
     // Get the distance (in inches) from the right sensor
     public double getRightDistance() {
@@ -55,7 +55,7 @@ public class RooAutoRangerSensorPair implements Runnable {
         return rightDistance;
     }
     public void updateRightDistance() {
-        rightDistance = voltsToInches(sensor_right.getAverageVoltage());
+        rightDistance = voltsToInches(sensor_right.getDistance());
     }
     public void updateBoth() {
         run();
