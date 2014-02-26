@@ -1,6 +1,6 @@
 package edu.wpi.first.wpilibj.templates;
 
-import edu.wpi.first.wpilibj.Ultrasonic;
+import edu.wpi.first.wpilibj.*;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,8 +13,8 @@ import edu.wpi.first.wpilibj.Ultrasonic;
  */
 public class RooAutoRangerSensorPair implements Runnable {
     private static final double VOLTS_PER_INCH = 0.009766;
-    private UltraSonic sensor_right;
-    private UltraSonic sensor_left;
+    private Ultrasonic sensor_right;
+    private Ultrasonic sensor_left;
     private SexyAnimal getStuff;
     private double leftDistance;
     private double rightDistance;
@@ -34,10 +34,10 @@ public class RooAutoRangerSensorPair implements Runnable {
     }
     
     // Convert voltage to inches
-    public double voltsToInches(double voltage) {
+    /*public double voltsToInches(double voltage) {
         double inches = (voltage/VOLTS_PER_INCH);
         return inches;
-    }
+    }*/
     
     
     // Get the distance (in inches) from the left sensor
@@ -47,7 +47,7 @@ public class RooAutoRangerSensorPair implements Runnable {
         return leftDistance;
     }
     public void updateLeftDistance() {
-        leftDistance = voltsToInches(sensor_left.getDistanceUnits());
+        leftDistance = sensor_left.getRangeInches();
     }
     // Get the distance (in inches) from the right sensor
     public double getRightDistance() {
@@ -55,7 +55,7 @@ public class RooAutoRangerSensorPair implements Runnable {
         return rightDistance;
     }
     public void updateRightDistance() {
-        rightDistance = voltsToInches(sensor_right.getDistance());
+        rightDistance = sensor_right.getRangeInches();
     }
     public void updateBoth() {
         run();

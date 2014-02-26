@@ -62,7 +62,7 @@ public class RooScoreAGoal {
       try{   
         RooAutoRangerSensorPair us = RooAutoRangerSensorPair.getInstance();
         rdt.setBoth(1);
-        while(us.voltsToInches(us.getAverage()) > SmartDashboard.getNumber("Distance from Automonous Goal")){
+        while(us.getAverage() > SmartDashboard.getNumber("Distance from Automonous Goal")){
                 Thread.sleep(10);
         }
         rdt.setBoth(0);
