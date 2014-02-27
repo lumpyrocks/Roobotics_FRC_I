@@ -18,7 +18,9 @@ public class RooAutoRangerSensorPair implements Runnable {
     private SexyAnimal getStuff;
     private double leftDistance;
     private double rightDistance;
-    
+    private DigitalInput left;
+    private DigitalInput right;
+    private DigitalOutput ping;
     private static RooAutoRangerSensorPair rarsp = null;
     public static RooAutoRangerSensorPair getInstance() {
         if (rarsp == null) {
@@ -28,9 +30,12 @@ public class RooAutoRangerSensorPair implements Runnable {
     }
     public RooAutoRangerSensorPair() {
         getStuff = new SexyAnimal();
-        sensor_right = new Ultrasonic(13,14);
-        sensor_left = new Ultrasonic(12,14);
         System.out.println("Sensors Created");
+        left = new DigitalInput(12);
+        right = new DigitalInput(13);
+        ping = new DigitalOutput(14);
+        sensor_right = new Ultrasonic(ping, right);
+        sensor_left = new Ultrasonic(ping, left);
     }
     
     // Convert voltage to inches
