@@ -34,7 +34,7 @@ public class RooAutoRanger {
     public RooAutoRanger() {
         this.driveTrain = RooDriveTrain.getInstance();
         this.joystick = RooJoystick.getInstance();
-        sensors = new RooAutoRangerSensorPair();
+        sensors = RooAutoRangerSensorPair.getInstance();
     }
     public void adjustPosition() {
         double diff = sensors.getDifference();

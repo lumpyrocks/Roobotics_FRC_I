@@ -26,10 +26,10 @@ public class RooAutoRangerSensorPair implements Runnable {
         }
         return rarsp;
     }
-    public RooAutoRangerSensorPair() {
-        getStuff = new SexyAnimal();
-        sensor_right = new Ultrasonic(13,14);
-        sensor_left = new Ultrasonic(12,14);
+    private RooAutoRangerSensorPair() {
+        //getStuff = new SexyAnimal();
+        sensor_right = new Ultrasonic(RobotMap.ULTRASONIC_RANGER_CHANNE_RIGHT,RobotMap.ULTRASONIC_PING_CHANNEL);
+        sensor_left = new Ultrasonic(RobotMap.ULTRASONIC_RANGER_CHANNEL_LEFT, RobotMap.ULTRASONIC_PING_CHANNEL);
         System.out.println("Sensors Created");
     }
     

@@ -20,7 +20,7 @@ public class SexyAnimal implements Runnable {
         while(true) {
             System.out.println("SEXY ANIMALS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             try {
-                Thread.sleep(5000);
+                Thread.sleep(50000);
             }
             catch (java.lang.InterruptedException e) {}
         } 

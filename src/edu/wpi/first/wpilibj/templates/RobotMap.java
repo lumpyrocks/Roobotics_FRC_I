@@ -35,9 +35,7 @@ public class RobotMap {
    
     //Digital IO
     public static final int KICKER_LIMIT_SWITCH = 1;
-    public static final int ultrasonicPingChannel = 13;
-    public static final int ultrasonicReadChannelLeft = 12;
-    public static final int ultrasonicReadChannelRight = 11;
+    public static final int ULTRASONIC_PING_CHANNEL = 14;
     
     // Analog Breakout
     public static final int GYRO_CHANNEL = 1;
@@ -65,8 +63,8 @@ public class RobotMap {
     
     // Auto-Ranger Subsystem
     // Analog Breakout
-    public static final int ULTRASONIC_RANGER_CHANNE_RIGHT = 1;
-    public static final int ULTRASONIC_RANGER_CHANNEL_LEFT = 2;
+    public static final int ULTRASONIC_RANGER_CHANNE_RIGHT = 12;
+    public static final int ULTRASONIC_RANGER_CHANNEL_LEFT = 13;
     
     //potentiometers
     public static final int POTENTIOMETER_CATAPULT = 3;
