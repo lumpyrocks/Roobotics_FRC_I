@@ -82,8 +82,10 @@ public class RooCatapult{
     
     private void potLaunch (){
         //For loop to check when pot goes but also as a way of making sure that 
+        RooTimer tm = new RooTimer();
+        tm.run();
        motors.setSpeed(SmartDashboard.getNumber("Catapult Power"));
-        for (int i = 0; (i <= SmartDashboard.getNumber("Catapult Time")/10) && !potOverMaxValue; i++){
+        for (int i = 0; (i <= SmartDashboard.getNumber("Catapult Time")/10) && !potOverMaxValue && !tm.isFinished(); i++){
             updatePotOverMaxValue();
             try{
                 Thread.sleep(10);
