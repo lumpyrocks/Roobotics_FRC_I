@@ -59,6 +59,8 @@ public class RobotMap {
     public static final int SCORE_A_LOW_GOAL= 2; //4;
     public static final int KICKER_TIMEOUT = 500; //Milliseconds
     public static final int SCORE_HIGH_GOAL = 10;
+    public static final int ARCH_MOTOR_SPEED = 1;
+    public static final int ARCH_MOTOR_CHANNEL = 1;
 ////////////////////////////////////////////////////////////////////////////////
     
     // Auto-Ranger Subsystem

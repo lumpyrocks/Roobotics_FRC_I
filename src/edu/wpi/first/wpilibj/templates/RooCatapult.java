@@ -40,7 +40,7 @@ public class RooCatapult{
         safetyButtonHeldNow = false;
         pultPot = RooCatapultPotentiometer.getInstance();
         SmartDashboard.putNumber("Catapult Power", 1);
-        SmartDashboard.putNumber("Catapult Time", 400);
+        SmartDashboard.putNumber("Catapult Time", 300);
         SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_FORKLIFT_DOWN_DURATION_BEFORE_LAUNCH, 800);
         SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_PULTPOT_MAX_ANGLE, 157);
         SmartDashboard.putBoolean("TEST POT TOO HIGH", false);
@@ -91,7 +91,7 @@ public class RooCatapult{
             catch (InterruptedException e){
                 
             }
-            System.out.println("jah");
+            
         }
         motors.setSpeed(0);
     }

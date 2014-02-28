@@ -35,6 +35,7 @@ public class Robot extends IterativeRobot {
     RooWreakHavoc rwh;
     RooScoreAGoal rsg;
     AnalogChannel pot;
+    RooArchMotor arch;
 
     
     /**
@@ -52,9 +53,10 @@ public class Robot extends IterativeRobot {
         cosmo = RooCosmetics.getInstance();
         auton = RooAutonomous.getInstance();
         ranger = RooAutoRanger.getInstance();
-        rwh = new RooWreakHavoc();
+        //rwh = new RooWreakHavoc();
         rsg = RooScoreAGoal.getInstance();
-        
+        arch = RooArchMotor.getInstance();
+        SmartDashboard.putBoolean("Run arch motor", false);
         //encoderCatapult.start();
     }
 
@@ -62,7 +64,7 @@ public class Robot extends IterativeRobot {
     public void autonomousInit (){
         cosmo.updateLights();
         auton.doAutonomous();
-        
+        //arch.periodic();
     }
     /**
      * This function is called periodically during autonomous
@@ -73,21 +75,24 @@ public class Robot extends IterativeRobot {
 
     public void teleopInit () {
         cosmo.updateLights();
+        
     }
     
     /**
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        //Teleop Periodic Functions as "While(Teleop){}", please do not put indefinite loops within it, this is a bad.
+
+        
         
         rdt.periodic();
         fl.periodic();
         pult.periodic();
         kicker.periodic();
-        ranger.adjustPosition();
+        //ranger.adjustPosition();
         rsg.periodic();
-        
+        //arch.periodic();
+        if (SmartDashboard.getBoolean("Run arch motor")) arch.periodic();
         
         SmartDashboard.putNumber("PULT POTENTIOMETER VALUE", pultPot.getVoltage());
         SmartDashboard.putNumber("PULT POTENTIOMETER ANGLE", pultPot.getAngle());
