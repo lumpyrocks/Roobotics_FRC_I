@@ -26,11 +26,6 @@ public class RooAutoRanger {
     private RooJoystick joystick;
     private RooDriveTrain driveTrain;
     
-    public RooAutoRanger(RooJoystick joystick, RooDriveTrain driveTrain) {
-        this.driveTrain = driveTrain;
-        this.joystick = joystick;
-        sensors = RooAutoRangerSensorPair.getInstance();
-    }
     public RooAutoRanger() {
         this.driveTrain = RooDriveTrain.getInstance();
         this.joystick = RooJoystick.getInstance();
@@ -42,15 +37,15 @@ public class RooAutoRanger {
         SmartDashboard.putNumber("Right Ranger: ", sensors.getRightDistance());
         SmartDashboard.putNumber("Left Ranger: ", sensors.getLeftDistance());
         SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_SKEW_OUTPUT, diff);
-        
-        if (Math.abs(diff)>=ERROR_MARGIN && joystick.getRawButton(RobotMap.USE_AUTORANGER_TO_CORRECT)) {
-            if (sensors.getLeftDistance()>sensors.getRightDistance()) {
-                driveTrain.setRight(1 - (sensors.getRightDistance()/sensors.getLeftDistance()));
+        if (joystick.getRawButton(RobotMap.USE_AUTORANGER_TO_CORRECT)){
+            if (Math.abs(diff)>=ERROR_MARGIN) {
+                if (sensors.getLeftDistance()>sensors.getRightDistance()) {
+                    driveTrain.setRight(1 - (sensors.getRightDistance()/sensors.getLeftDistance()));
+                }
+                else if (sensors.getLeftDistance()<sensors.getRightDistance()) {
+                 driveTrain.setLeft(1 - (sensors.getLeftDistance()/sensors.getRightDistance()));
+                }
             }
-            else if (sensors.getLeftDistance()<sensors.getRightDistance()) {
-                driveTrain.setLeft(1 - (sensors.getLeftDistance()/sensors.getRightDistance()));
-            }
-//            diff = sensors.getAverageDifference();
         }
     }
 }
