@@ -17,17 +17,16 @@ public class RooForkliftPotentiometer {
     private static final double DEGREES_PER_VOLT = 62.8;
     private AnalogChannel pot;
     
-    private static RooForkliftPotentiometer pultPot = null;
+    private static RooForkliftPotentiometer liftPot = null;
     public static RooForkliftPotentiometer getInstance() {
-        if (pultPot==null) {
-            pultPot = new RooForkliftPotentiometer();
+        if (liftPot==null) {
+            liftPot = new RooForkliftPotentiometer();
         }
-        return pultPot;
+        return liftPot;
     }
     
     public RooForkliftPotentiometer(){
         pot = new AnalogChannel(RobotMap.POTENTIOMETER_FORKLIFT);
-        SmartDashboard.putNumber("POTENTIOMETER VALUE FER FORKLIFT", pot.getAverageVoltage()); 
     }
     
     public double getVoltage(){

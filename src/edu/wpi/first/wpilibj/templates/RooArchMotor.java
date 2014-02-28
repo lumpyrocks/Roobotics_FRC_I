@@ -26,9 +26,14 @@ public class RooArchMotor {
     
     public RooArchMotor() {
         archMotor = new Victor(RobotMap.ARCH_MOTOR_CHANNEL);
-}
+    }
     
-    public void periodic(){
+    
+    public void setWheelsIn (){
+        archMotor.set(-1 * RobotMap.ARCH_MOTOR_SPEED);
+    }
+    
+    public void setWheelsOut (){
         archMotor.set(RobotMap.ARCH_MOTOR_SPEED);
     }
 }

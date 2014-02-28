@@ -52,8 +52,6 @@ public class RobotMap {
     public static final int ONE_BUTTON_KICK = 3; //9;
     public static final int JOG_FORKLIFT_UP = 99; //11;
     public static final int JOG_FORKLIFT_DOWN = 99; //10;
-    public static final int JOG_KICKER_UP = 6; //6;
-    public static final int JOG_KICKER_DOWN = 5; //7;
     public static final int USE_AUTORANGER_TO_CORRECT = 4; //8;
     public static final int JOYSTICK_AS_FORKLIFT = 99;//2;
     public static final int SCORE_A_LOW_GOAL= 2; //4;
@@ -61,6 +59,16 @@ public class RobotMap {
     public static final int SCORE_HIGH_GOAL = 10;
     public static final int ARCH_MOTOR_SPEED = 1;
     public static final int ARCH_MOTOR_CHANNEL = 1;
+    
+    // Left Bumper and Right bumper used to be the jog Kicker functions but since the arch might take place of the kickers
+    //the buttons are now controling the arch
+    public static final int JOG_KICKER_UP = 6; //6;
+    public static final int JOG_KICKER_DOWN = 5; //7;
+    public static final int BRING_ARCH_DOWN = 5;
+    public static final int BRING_ARCH_UP = 6;
+    
+    
+    
 ////////////////////////////////////////////////////////////////////////////////
     
     // Auto-Ranger Subsystem
