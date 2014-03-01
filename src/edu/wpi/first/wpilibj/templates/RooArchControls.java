@@ -17,16 +17,16 @@ public class RooArchControls {
     RooJoystick joystick;
     RooForkliftPotentiometer liftPot;
     
-    private static RooArchMotor arch = null;
+    private static RooArchControls arch = null;
     
-    private boolean downHeldNow = false;
-    private boolean downHeldLastTime = false;
-    private boolean upHeldNow = false;
-    private boolean upHeldLastTime = false;
+    private double downHeldNow = 0;
+    private double downHeldLastTime = 0;
+    private double upHeldNow = 0;
+    private double upHeldLastTime = 0;
     
-    public static RooArchMotor getInstance() {
+    public static RooArchControls getInstance() {
         if (arch==null) {
-             arch = new RooArchMotor();
+             arch = new RooArchControls();
          }
          return arch;
      }
@@ -44,27 +44,27 @@ public class RooArchControls {
     }
     
     public void checkForDown(){
-        if (downHeldNow == true && downHeldLastTime == false){
+        if (downHeldNow == -1 && downHeldLastTime == 0){
             bringArchDown();
         }
         downHeldLastTime = downHeldNow;
-        downHeldNow = joystick.getRawButton(RobotMap.BRING_ARCH_DOWN);
+        downHeldNow = joystick.getRawAxis(6);
     }
     
     public void bringArchDown (){
-        
+        brush.setWheelsIn();
     }
     
     public void checkForUp(){
-        if (upHeldNow == true && upHeldLastTime == false){
+        if (upHeldNow == 1 && upHeldLastTime == 0){
             bringArchUp();
         }
         upHeldLastTime = upHeldNow;
-        upHeldNow = joystick.getRawButton(RobotMap.BRING_ARCH_UP);
+        upHeldNow = joystick.getRawAxis(6);
     }
     
     public void bringArchUp(){
-        
+        brush.setWheelsOut();
     }
     
     

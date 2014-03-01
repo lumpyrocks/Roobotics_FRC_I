@@ -31,13 +31,14 @@ public class RooAutoRanger {
         this.joystick = RooJoystick.getInstance();
         sensors = RooAutoRangerSensorPair.getInstance();
     }
-    public void adjustPosition() {
-        double diff = sensors.getDifference();
+    public void periodic() {
+       // double diff = sensors.getDifference();
         
-        SmartDashboard.putNumber("Right Ranger: ", sensors.getRightDistance());
-        SmartDashboard.putNumber("Left Ranger: ", sensors.getLeftDistance());
-        SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_SKEW_OUTPUT, diff);
-        if (joystick.getRawButton(RobotMap.USE_AUTORANGER_TO_CORRECT)){
+        SmartDashboard.putNumber("Ranger: ", sensors.getDistance());
+        SmartDashboard.putNumber("Ranger in Inches: ", sensors.voltsToInches(sensors.getDistance()) );
+        //SmartDashboard.putNumber("Left Ranger: ", sensors.getLeftDistance());
+        /*SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_SKEW_OUTPUT, diff);
+        /if (joystick.getRawButton(RobotMap.USE_AUTORANGER_TO_CORRECT)){
             if (Math.abs(diff)>=ERROR_MARGIN) {
                 if (sensors.getLeftDistance()>sensors.getRightDistance()) {
                     driveTrain.setRight(1 - (sensors.getRightDistance()/sensors.getLeftDistance()));
@@ -46,6 +47,6 @@ public class RooAutoRanger {
                  driveTrain.setLeft(1 - (sensors.getLeftDistance()/sensors.getRightDistance()));
                 }
             }
-        }
+        } */
     }
 }

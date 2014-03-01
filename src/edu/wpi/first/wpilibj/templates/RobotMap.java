@@ -64,8 +64,6 @@ public class RobotMap {
     //the buttons are now controling the arch
     public static final int JOG_KICKER_UP = 6; //6;
     public static final int JOG_KICKER_DOWN = 5; //7;
-    public static final int BRING_ARCH_DOWN = 5;
-    public static final int BRING_ARCH_UP = 6;
     
     
     

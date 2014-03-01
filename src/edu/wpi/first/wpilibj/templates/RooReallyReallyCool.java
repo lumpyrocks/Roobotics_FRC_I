@@ -29,7 +29,7 @@ public class RooReallyReallyCool {
     }
     
     public void doCoolStuffPeriodic() {
-        while(sensors.getAverage()<60) {
+        while(sensors.voltsToInches(sensors.getDistance())<60) {
             rdt.setBoth(0.6);
         }
         rdt.setBoth(-0.4);

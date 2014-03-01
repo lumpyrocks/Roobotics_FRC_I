@@ -30,12 +30,13 @@ public class Robot extends IterativeRobot {
     RooCatapult pult;
     RooKicker kicker;
     RooCosmetics cosmo;
-    RooAutoRanger ranger;
+    NewRooAutoRanger ranger;
     RooAutonomous auton;
     RooWreakHavoc rwh;
     RooScoreAGoal rsg;
     AnalogChannel pot;
     RooArchMotor arch;
+    RooArchControls archC;
 
     
     /**
@@ -52,10 +53,12 @@ public class Robot extends IterativeRobot {
         kicker = RooKicker.getInstance();
         cosmo = RooCosmetics.getInstance();
         auton = RooAutonomous.getInstance();
-        ranger = RooAutoRanger.getInstance();
+        //ranger = RooAutoRanger.getInstance();
+        ranger = NewRooAutoRanger.getInstance();
         //rwh = new RooWreakHavoc();
         rsg = RooScoreAGoal.getInstance();
         arch = RooArchMotor.getInstance();
+        archC = RooArchControls.getInstance();
         SmartDashboard.putBoolean("Run arch motor", false);
         //encoderCatapult.start();
     }
@@ -89,17 +92,13 @@ public class Robot extends IterativeRobot {
         fl.periodic();
         pult.periodic();
         kicker.periodic();
-        //ranger.adjustPosition();
+        ranger.periodic();
         rsg.periodic();
         //arch.periodic();
-        if (SmartDashboard.getBoolean("Run arch motor")) arch.periodic();
+        archC.checkForBothButtons();
         
         SmartDashboard.putNumber("PULT POTENTIOMETER VALUE", pultPot.getVoltage());
         SmartDashboard.putNumber("PULT POTENTIOMETER ANGLE", pultPot.getAngle());
-        
-        SmartDashboard.putNumber("LIFT POTENTIOMETER VALUE", flPot.getVoltage());
-        SmartDashboard.putNumber("LIFT POTENTIOMETER ANGLE", flPot.getAngle());
-        
     }
     
     

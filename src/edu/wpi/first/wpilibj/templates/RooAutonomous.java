@@ -56,9 +56,10 @@ public class RooAutonomous {
         try{   
         RooAutoRangerSensorPair us = RooAutoRangerSensorPair.getInstance();
         rdt.setBoth(speed);
-        while(us.getAverage() > SmartDashboard.getNumber("Distance from Automonous Goal")){
+        
+        /*while(us.voltsToInches(us.getDistance())> SmartDashboard.getNumber("Distance from Automonous Goal")){
                 Thread.sleep(10);
-        }
+        }*/
         rdt.setBoth(0);
         Thread.sleep(10);
         pult.launch(true);

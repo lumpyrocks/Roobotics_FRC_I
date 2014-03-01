@@ -37,7 +37,7 @@ public class RooScoreAGoal {
         fl = RooForkLift.getInstance();
         pult = RooCatapult.getInstance();
         rdt = RooDriveTrain.getInstance();
-        SmartDashboard.putNumber("Backup Stop Time", 500);
+        SmartDashboard.putNumber("Backup Stop Time", 400);
         SmartDashboard.putNumber("Forklift Down Stop Time", 500);
         SmartDashboard.putNumber("Kicker Up Stop Time",500);
         SmartDashboard.putNumber("Kicker Down Stop Time",500);
@@ -62,7 +62,7 @@ public class RooScoreAGoal {
       try{   
         RooAutoRangerSensorPair us = RooAutoRangerSensorPair.getInstance();
         rdt.setBoth(1);
-        while(us.getAverage() > SmartDashboard.getNumber("Distance from Automonous Goal")){
+        while(us.voltsToInches(us.getDistance())> SmartDashboard.getNumber("Distance from Automonous Goal")){
                 Thread.sleep(10);
         }
         rdt.setBoth(0);
