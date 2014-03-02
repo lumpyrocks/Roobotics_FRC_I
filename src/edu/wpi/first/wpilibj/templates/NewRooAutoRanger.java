@@ -36,8 +36,12 @@ public class NewRooAutoRanger {
     public double voltsToInches(double voltage) {
         return voltage/0.009766;
     }
+    public double getADC() {
+        return input.getValue();
+    }
     public void periodic() {
         SmartDashboard.putNumber("Autoranger Voltage: ", getVoltage());
         SmartDashboard.putNumber("Autoranger Inches: ", getInches());
+        SmartDashboard.putNumber("Raw ADC value: ", getADC());
     }
 }

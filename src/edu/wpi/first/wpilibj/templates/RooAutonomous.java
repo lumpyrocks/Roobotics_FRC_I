@@ -25,33 +25,42 @@ public class RooAutonomous {
     RooCatapult pult;
     RooScoreAGoal rsg;
     
-    private final double speed = 1.0;
+    private final double speed = .5;
     
-    public RooAutonomous (RooDriveTrain rdt, RooCatapult pult){
-        this.rdt = rdt;
-        this.pult = pult;
-        SmartDashboard.putNumber("Distance from Autonomous Goal", 1);
-       
-    }
+    
     
     public RooAutonomous() {
         this.rdt = RooDriveTrain.getInstance();
         this.pult = RooCatapult.getInstance();
         this.rsg = RooScoreAGoal.getInstance();
+        SmartDashboard.putNumber("Distance from Autonomous Goal", 1);
+        SmartDashboard.putNumber("Auton Fwd Time", 6000);
+        SmartDashboard.putNumber("Auton Rev Time", 1100);
+        SmartDashboard.putNumber("Auton Left FWD Speed", .37);
+        SmartDashboard.putNumber("Auton Right FWD Speed", .5);
+        SmartDashboard.putNumber("Auton Left REV Speed", -.5);
+        SmartDashboard.putNumber("Auton Right REV Speed", -.37);
+        
     }
-    
     public void doAutonomous (){
         try{  
-            rdt.setBoth(speed);
-            Thread.sleep(5000);
+            rdt.setLeft(SmartDashboard.getNumber("Auton Left FWD Speed"));
+            rdt.setRight(SmartDashboard.getNumber("Auton Right FWD Speed"));
+            Thread.sleep((long) SmartDashboard.getNumber("Auton Fwd Time"));
+            rdt.setLeft(SmartDashboard.getNumber("Auton Left REV Speed"));
+            rdt.setRight(SmartDashboard.getNumber("Auton Right REV Speed")) ;
+            Thread.sleep((long) SmartDashboard.getNumber("Auton Rev Time"));
             rdt.setBoth(0);
-            rsg.scoreAHighGoal();
-            
+            Thread.sleep(200);
+            //rsg.scoreAHighGoal();
+            pult.launch(true);
+           //rwh.HENRY_MUST_BE_KILLED = true;
         }catch (java.lang.InterruptedException e){
-            
+            System.err.println("Shoot! SexyAnimals!! The main thread caught an interrupt signal, we're ignoring it (Like a Boss)!");
+                    
         }
     }
-    
+    /*
     public void doAutonomousSonic(){
         try{   
         RooAutoRangerSensorPair us = RooAutoRangerSensorPair.getInstance();
@@ -59,7 +68,7 @@ public class RooAutonomous {
         
         /*while(us.voltsToInches(us.getDistance())> SmartDashboard.getNumber("Distance from Automonous Goal")){
                 Thread.sleep(10);
-        }*/
+        }
         rdt.setBoth(0);
         Thread.sleep(10);
         pult.launch(true);
@@ -68,5 +77,5 @@ public class RooAutonomous {
         catch(java.lang.InterruptedException e){
             
         }
-    }
+    }*/
 }

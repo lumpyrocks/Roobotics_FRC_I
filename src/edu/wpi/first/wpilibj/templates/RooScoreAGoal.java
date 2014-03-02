@@ -41,9 +41,6 @@ public class RooScoreAGoal {
         SmartDashboard.putNumber("Forklift Down Stop Time", 500);
         SmartDashboard.putNumber("Kicker Up Stop Time",500);
         SmartDashboard.putNumber("Kicker Down Stop Time",500);
-        SmartDashboard.putNumber("Forklift Up Stop Time",500);
-        buttonHeldNow = false;
-        buttonHeldLastIteration = false;
         buttonHeldAtTheMoment = false;
         buttonHeldLastTime = false;
     }
@@ -60,14 +57,15 @@ public class RooScoreAGoal {
     public void scoreAHighGoal (){
       if (buttonHeldAtTheMoment == true && buttonHeldLastTime == false && joystick.getRawButton(RobotMap.CATAPULT_SAFETY_BUTTON) == true){
       try{   
-        RooAutoRangerSensorPair us = RooAutoRangerSensorPair.getInstance();
-        rdt.setBoth(1);
-        while(us.voltsToInches(us.getDistance())> SmartDashboard.getNumber("Distance from Automonous Goal")){
-                Thread.sleep(10);
-        }
+        rdt.setLeft(-.5);
+        rdt.setRight(-.4) ;
+        
+        Thread.sleep((long) SmartDashboard.getNumber("Auton Rev Time"));
         rdt.setBoth(0);
-        Thread.sleep(10);
+        Thread.sleep(200);
+        //rsg.scoreAHighGoal();
         pult.launch(true);
+        //rwh.HENRY_MUST_BE_KILLED = true;
         }
         catch(java.lang.InterruptedException e){   
         } 
@@ -78,7 +76,8 @@ public class RooScoreAGoal {
     
     public void scoreALowGoal(){
         try{
-            rdt.setBoth(.5);
+            rdt.setRight(.5);
+            rdt.setLeft(.4);
             Thread.sleep((long)SmartDashboard.getNumber("Backup Stop Time"));
             rdt.setBoth(0.0);
             

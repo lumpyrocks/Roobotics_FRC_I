@@ -45,7 +45,7 @@ public class RobotMap {
     public static final int CATAPULT_SAFETY_BUTTON = 7;
     //Buttons for Joystick, these numbers are temporary
     public static final int BUMP_LEFT_BUTTON = 99; //4;
-    public static final int LAUNCH_BUTTON = 8; //1;
+    public static final int LAUNCH_BUTTON = 10; //1;
     public static final int BUMP_RIGHT_BUTTON = 99; //3;
     public static final int BUMP_FORWARD_BUTTON = 99; // 2;
     public static final int BUMP_REVERSE_BUTTON = 99; //1;
@@ -56,7 +56,7 @@ public class RobotMap {
     public static final int JOYSTICK_AS_FORKLIFT = 99;//2;
     public static final int SCORE_A_LOW_GOAL= 2; //4;
     public static final int KICKER_TIMEOUT = 500; //Milliseconds
-    public static final int SCORE_HIGH_GOAL = 10;
+    public static final int SCORE_HIGH_GOAL = 8;
     public static final int ARCH_MOTOR_SPEED = 1;
     public static final int ARCH_MOTOR_CHANNEL = 1;
     
