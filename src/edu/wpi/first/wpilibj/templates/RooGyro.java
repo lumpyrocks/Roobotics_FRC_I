@@ -29,4 +29,18 @@ public class RooGyro {
     public double getAngle (){
         return gyro.getAngle();
     }
+    
+    //Returns getAngle -180 throught 180
+    public double getSimplestAngle(){
+        double x = getAngle();
+        while (x>180){
+            x -= 360;
+        }
+        while (x<-180){
+            x += 360;
+        }
+        
+        return x;
+    }
+    
 }

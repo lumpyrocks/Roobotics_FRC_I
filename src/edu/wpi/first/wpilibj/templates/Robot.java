@@ -37,6 +37,8 @@ public class Robot extends IterativeRobot {
     AnalogChannel pot;
     RooArchMotor arch;
     RooArchControls archC;
+    RooAdjust adj;
+    RooGyro gyro;
 
     
     /**
@@ -55,10 +57,12 @@ public class Robot extends IterativeRobot {
         auton = RooAutonomous.getInstance();
         //ranger = RooAutoRanger.getInstance();
         ranger = NewRooAutoRanger.getInstance();
+        adj = RooAdjust.getInstance();
         //rwh = new RooWreakHavoc();
         rsg = RooScoreAGoal.getInstance();
         arch = RooArchMotor.getInstance();
         archC = RooArchControls.getInstance();
+        gyro = RooGyro.getInstance();
         SmartDashboard.putBoolean("Run arch motor", false);
         //encoderCatapult.start();
     }
@@ -87,13 +91,15 @@ public class Robot extends IterativeRobot {
     public void teleopPeriodic() {
 
         
-        
+       
         rdt.periodic();
         fl.periodic();
         pult.periodic();
         kicker.periodic();
         ranger.periodic();
         rsg.periodic();
+        adj.adjust();
+        
         //arch.periodic();
         archC.checkForBothButtons();
         
