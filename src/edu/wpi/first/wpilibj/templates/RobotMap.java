@@ -69,10 +69,7 @@ public class RobotMap {
     
 ////////////////////////////////////////////////////////////////////////////////
     
-    // Auto-Ranger Subsystem
-    // Analog Breakout
-    public static final int ULTRASONIC_RANGER_CHANNE_RIGHT = 12;
-    public static final int ULTRASONIC_RANGER_CHANNEL_LEFT = 13;
+
     
     //potentiometers
     public static final int POTENTIOMETER_CATAPULT = 3;
@@ -93,10 +90,6 @@ public class RobotMap {
     // Digital Sidecar PWM outputs
     public static final int LAUNCHER_LEFT_MOTOR_CHANNEL = 6;
     public static final int LAUNCHER_RIGHT_MOTOR_CHANNEL = 5;
-    // Digital Sidecar GPIO Inputs
-    public static final int LAUNCHER_ENCODER_A_CHANNEL = 4;
-    public static final int LAUNCHER_ENCODER_B_CHANNEL = 5;
-    public static final int LAUNCHER_ENCODER_MODULE = 1;
 //////////////////////////////////////////////////////////////////////////////// 
     
     // Forklift Subsystem
@@ -119,6 +112,7 @@ public class RobotMap {
     public static final String SMARTDASHBOARD_FORKLIFT_DOWN_DURATION_BEFORE_LAUNCH = "Forklift pre-launch lower duration";
     public static final String SMARTDASHBOARD_KICKER_TIMEOUT = "Time it takes to put kicker down and up in milliseconds";
     public static final String SMARTDASHBOARD_PULTPOT_MAX_ANGLE = "Pult Max Angle?";
+    public static final int AUTORANGER_CHANNEL = 5;
     
     
     

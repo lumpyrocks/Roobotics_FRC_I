@@ -25,7 +25,7 @@ public class NewRooAutoRanger {
     }
     private AnalogChannel input;
     public NewRooAutoRanger() {
-        input = new AnalogChannel(5);
+        input = new AnalogChannel(RobotMap.AUTORANGER_CHANNEL);
     }
     public double getVoltage() {
         return input.getAverageVoltage();
