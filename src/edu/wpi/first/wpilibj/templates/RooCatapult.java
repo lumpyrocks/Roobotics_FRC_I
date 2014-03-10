@@ -50,18 +50,12 @@ public class RooCatapult{
     public void periodic(){
         updatePotOverMaxValue();
         if (buttonHeldNow == true && buttonHeldLastIteration == false && joystick.getRawButton(RobotMap.CATAPULT_SAFETY_BUTTON) == true ){
-            threadLaunch(true);
+            RooThreadedCatapult.getInstance().launch();
         }
         buttonHeldLastIteration = buttonHeldNow;
         buttonHeldNow = joystick.getRawButton(RobotMap.LAUNCH_BUTTON);
     }
-    public void threadLaunch(final boolean lowerForklift) {
-        new Thread(new Runnable() {
-    public void run() {
-        RooCatapult.getInstance().launch(lowerForklift);
-    }
-}).start();
-    }
+    
     public void launch( boolean lowerForklift){
         if (lowerForklift == true){
             makeSureForkLiftIsDown ();
