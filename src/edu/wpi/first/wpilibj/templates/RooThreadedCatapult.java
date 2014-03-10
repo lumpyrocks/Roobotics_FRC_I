@@ -21,9 +21,10 @@ public class RooThreadedCatapult implements Runnable {
     public RooThreadedCatapult() {
         t = new Thread(this);
     }
-    public synchronized void launch() { t.start(); }
+    public void launch() { t.start(); }
     public void run() {
-        synchronized(this) { RooCatapult.getInstance().launch(true); }
+        RooCatapult rc = RooCatapult.getInstance();
+        synchronized(rc) { RooCatapult.getInstance().launch(true); }
     }
     
 }
