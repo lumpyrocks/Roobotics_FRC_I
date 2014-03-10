@@ -23,7 +23,7 @@ public class RooThreadedCatapult implements Runnable {
     }
     public synchronized void launch() { t.start(); }
     public void run() {
-        RooCatapult.getInstance().launch(true);
+        synchronized(this) { RooCatapult.getInstance().launch(true); }
     }
     
 }
