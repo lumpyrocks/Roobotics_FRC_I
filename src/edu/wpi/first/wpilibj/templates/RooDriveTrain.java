@@ -68,9 +68,10 @@ public class RooDriveTrain {
 //        boolean motorsChangedThisIteration = false;
 //        if (motorsChangedThisIteration == false){
 //            motorsChangedThisIteration = autoRangerPeriodic ();
-//        }
+//        }s
 //        if (motorsChangedThisIteration){
             joystickDrive ();
+            
         //}
         //The following two lines have been commented out until we can get the Bot to move Foreward and Back according to Joystick
         //setRight(speed-joystick.getX());

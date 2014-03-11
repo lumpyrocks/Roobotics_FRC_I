@@ -30,7 +30,7 @@ public class Robot extends IterativeRobot {
     RooCatapult pult;
     RooKicker kicker;
     RooCosmetics cosmo;
-    NewRooAutoRanger ranger;
+    //NewRooAutoRanger ranger;
     RooAutonomous auton;
     RooWreakHavoc rwh;
     RooScoreAGoal rsg;
@@ -56,7 +56,7 @@ public class Robot extends IterativeRobot {
         cosmo = RooCosmetics.getInstance();
         auton = RooAutonomous.getInstance();
         //ranger = RooAutoRanger.getInstance();
-        ranger = NewRooAutoRanger.getInstance();
+        //ranger = NewRooAutoRanger.getInstance();
         adj = RooAdjust.getInstance();
         //rwh = new RooWreakHavoc();
         rsg = RooScoreAGoal.getInstance();
@@ -96,7 +96,7 @@ public class Robot extends IterativeRobot {
         fl.periodic();
         pult.periodic();
         kicker.periodic();
-        ranger.periodic();
+        //ranger.periodic();
         rsg.periodic();
         adj.adjust();
         

@@ -12,11 +12,7 @@ package edu.wpi.first.wpilibj.templates;
  */
 
 public class RooThreadedCatapult implements Runnable {
-    private static RooThreadedCatapult rtc = null;
-    public static RooThreadedCatapult getInstance() {
-        if (rtc==null) rtc = new RooThreadedCatapult();
-        return rtc;
-    }
+
     private final Thread t;
     public RooThreadedCatapult() {
         t = new Thread(this);
@@ -24,7 +20,7 @@ public class RooThreadedCatapult implements Runnable {
     public void launch() { t.start(); }
     public void run() {
         RooCatapult rc = RooCatapult.getInstance();
-        synchronized(rc) { RooCatapult.getInstance().launch(true); }
+        rc.launch(true);
     }
     
 }

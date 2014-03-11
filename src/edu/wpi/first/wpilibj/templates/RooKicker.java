@@ -61,6 +61,7 @@ public class RooKicker {
             speed = -1 * SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_KICKER_UP_SPEED_CONSTANT, startingUpSpeed);
         }else if (joystick.getRawButton(RobotMap.JOG_KICKER_DOWN)){
             speed = SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_KICKER_DOWN_SPEED_CONSTANT, startingDownSpeed);
+            System.out.println("WE DROP BONES ON 'EM");
         } else{
             speed = 0;
         }
