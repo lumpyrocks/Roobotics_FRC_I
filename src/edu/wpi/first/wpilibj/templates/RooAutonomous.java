@@ -35,11 +35,11 @@ public class RooAutonomous {
         this.rsg = RooScoreAGoal.getInstance();
         SmartDashboard.putNumber("Distance from Autonomous Goal", 1);
         SmartDashboard.putNumber("Auton Fwd Time", 6000);
-        SmartDashboard.putNumber("Auton Rev Time", 1100);
-        SmartDashboard.putNumber("Auton Left FWD Speed", .37);
+        SmartDashboard.putNumber("Auton Rev Time", 0);
+        SmartDashboard.putNumber("Auton Left FWD Speed", .4);
         SmartDashboard.putNumber("Auton Right FWD Speed", .5);
         SmartDashboard.putNumber("Auton Left REV Speed", -.5);
-        SmartDashboard.putNumber("Auton Right REV Speed", -.37);
+        SmartDashboard.putNumber("Auton Right REV Speed", -.4);
         
     }
     public void doAutonomous (){
@@ -51,9 +51,9 @@ public class RooAutonomous {
             rdt.setRight(SmartDashboard.getNumber("Auton Right REV Speed")) ;
             Thread.sleep((long) SmartDashboard.getNumber("Auton Rev Time"));
             rdt.setBoth(0);
-            Thread.sleep(200);
+            Thread.sleep(1250);
             //rsg.scoreAHighGoal();
-            pult.launch(true);
+            rsg.pultALowGoal();
            //rwh.HENRY_MUST_BE_KILLED = true;
         }catch (java.lang.InterruptedException e){
             System.err.println("Shoot! SexyAnimals!! The main thread caught an interrupt signal, we're ignoring it (Like a Boss)!");

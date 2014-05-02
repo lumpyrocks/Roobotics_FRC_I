@@ -40,14 +40,23 @@ public class RooScoreAGoal {
         SmartDashboard.putNumber("Backup Stop Time", 400);
         SmartDashboard.putNumber("Forklift Down Stop Time", 500);
         SmartDashboard.putNumber("Kicker Up Stop Time",500);
+//        System.out.println("Putting stop time on smartdashboard");
         SmartDashboard.putNumber("Kicker Down Stop Time",500);
+//        System.out.println("Getting stop time from smartdashboard");
+        SmartDashboard.putNumber("Forklift Up Stop Time", 500);
+//        System.out.println("Got stop time from smartdashboard");
+        SmartDashboard.putNumber("Slow Launch Multiplier (>1)", 1.9);
         buttonHeldAtTheMoment = false;
         buttonHeldLastTime = false;
     }
     
     public void periodic(){
-        if (buttonHeldNow == true && buttonHeldLastIteration == false){
+        if (buttonHeldNow == true && buttonHeldLastIteration == false && !joystick.getRawButton(RobotMap.CATAPULT_SAFETY_BUTTON)){
             scoreALowGoal();
+            System.out.println("Dogman");
+        }else if (buttonHeldNow == true && buttonHeldLastIteration == false && joystick.getRawButton(RobotMap.CATAPULT_SAFETY_BUTTON)){
+            pultALowGoal();
+            System.out.println("Catman");
         }
         scoreAHighGoal();
         buttonHeldLastIteration = buttonHeldNow;
@@ -98,5 +107,15 @@ public class RooScoreAGoal {
         catch(java.lang.InterruptedException e){
             
         }
+    }
+
+    public void pultALowGoal() {
+        double defaultPower = SmartDashboard.getNumber("Catapult Power");
+        double defaultTime = SmartDashboard.getNumber("Catapult Time");
+        SmartDashboard.putNumber("Catapult Power", defaultPower/SmartDashboard.getNumber("Slow Launch Multiplier (>1)"));
+        SmartDashboard.putNumber("Catapult Time", defaultTime*SmartDashboard.getNumber("Slow Launch Multiplier (>1)"));
+        pult.launch(true);
+        SmartDashboard.putNumber("Catapult Power", defaultPower);
+        SmartDashboard.putNumber("Catapult Time", defaultTime);
     }
 }

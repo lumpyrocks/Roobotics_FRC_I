@@ -81,6 +81,23 @@ public class RooWreakHavoc implements Runnable, RooCommonSense {
         }
         rdt.setBoth(0.0);
     }
+    
+    public void randomforward(int maxSteps){
+           for(int i =0; i<maxSteps; i++){
+               rdt.setBoth(1.0);
+               try{
+                   Thread.sleep(rn.nextInt());
+               }
+               catch(java.lang.InterruptedException e){
+               }
+               rdt.setBoth(0);
+               try{
+                   Thread.sleep(rn.nextInt());
+               }
+               catch(java.lang.InterruptedException e){
+               }
+           }
+        }
     public void invertControls() {
         
     }

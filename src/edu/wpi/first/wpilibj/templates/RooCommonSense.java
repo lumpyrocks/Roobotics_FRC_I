@@ -6,6 +6,7 @@
 
 package edu.wpi.first.wpilibj.templates;
 
+
 /**
  *
  * @author henrypitcairn

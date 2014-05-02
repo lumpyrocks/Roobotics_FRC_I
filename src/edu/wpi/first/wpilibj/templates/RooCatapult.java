@@ -23,6 +23,7 @@ public class RooCatapult{
     
     private RooCatapultMotorPair motors;
     private Joystick joystick;
+    private RooDriveTrain rdt;
     private RooForkLift fl;
     private RooCatapultPotentiometer pultPot;
     
@@ -34,13 +35,14 @@ public class RooCatapult{
     public RooCatapult(){ 
         motors = new RooCatapultMotorPair(false);
         this.joystick = RooJoystick.getInstance();
+        rdt = RooDriveTrain.getInstance();
         this.fl = RooForkLift.getInstance();
         buttonHeldLastIteration = false;
         buttonHeldNow = false;
         safetyButtonHeldNow = false;
         pultPot = RooCatapultPotentiometer.getInstance();
         SmartDashboard.putNumber("Catapult Power", 1);
-        SmartDashboard.putNumber("Catapult Time", 300);
+        SmartDashboard.putNumber("Catapult Time", 340);
         SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_FORKLIFT_DOWN_DURATION_BEFORE_LAUNCH, 800);
         SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_PULTPOT_MAX_ANGLE, 157);
         SmartDashboard.putBoolean("TEST POT TOO HIGH", false);
@@ -50,13 +52,14 @@ public class RooCatapult{
     public void periodic(){
         updatePotOverMaxValue();
         if (buttonHeldNow == true && buttonHeldLastIteration == false && joystick.getRawButton(RobotMap.CATAPULT_SAFETY_BUTTON) == true ){
-            new RooThreadedCatapult().launch();
+            launch(true);
         }
         buttonHeldLastIteration = buttonHeldNow;
         buttonHeldNow = joystick.getRawButton(RobotMap.LAUNCH_BUTTON);
     }
     
     public void launch( boolean lowerForklift){
+        rdt.setBoth(0);
         if (lowerForklift == true){
             makeSureForkLiftIsDown ();
         }

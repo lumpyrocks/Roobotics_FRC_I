@@ -49,7 +49,7 @@ public class RooKicker {
         limitSwitch = new DigitalInput (RobotMap.KICKER_LIMIT_SWITCH);
         SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_KICKER_DOWN_SPEED_CONSTANT, startingDownSpeed);
         SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_KICKER_UP_SPEED_CONSTANT, startingUpSpeed);
-        SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_KICKER_TIMEOUT, 300);
+        SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_KICKER_TIMEOUT, 350);
         
     }
     

@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
+import edu.wpi.first.wpilibj.Joystick;
 /**
  *
  * @author Dorian
@@ -27,7 +28,8 @@ public class RooCosmetics {
     private Solenoid greenLEDs;
     private Solenoid blueLEDs;
     private DriverStation ds;
-    
+    private boolean flashy;
+    private boolean bhl = false;
     
     public RooCosmetics (){
         //A class for all of the sexy parts of our robot
@@ -50,11 +52,31 @@ public class RooCosmetics {
             redLEDs.set (false);
             blueLEDs.set (false);
         }else{
-            //DELETEMEPLEASE();
-            setLEDsToAllianceColors ();
+
+//            if (RooJoystick.getInstance().getRawButton(RobotMap.ONE_BUTTON_KICK) && RooJoystick.getInstance().getRawButton(RobotMap.CATAPULT_SAFETY_BUTTON) && !bhl) {
+//                if (flashy) flashy=false;
+//                if (!flashy) flashy=true;
+//            }
+//            if (RooJoystick.getInstance().getRawButton(RobotMap.ONE_BUTTON_KICK)) { bhl = true; } else { bhl = false; }
+//            
+//            if (flashy) {
+//                flashy();
+//            } else {
+                setLEDsToAllianceColors ();
+//            }
+            
+        }
+//        if ()
+    }
+    public void flashy() {
+        if (blueLEDs.get()) {
+            blueLEDs.set(false);
+            redLEDs.set(true);
+        } else if (redLEDs.get()) {
+           redLEDs.set(false);
+           blueLEDs.set(true);
         }
     }
-    
     public void setGreen(){
         //ledStrip.set(SmartDashboard.getBoolean(RobotMap.SMARTDASHBOARD_LED_TOGGLE));
         redLEDs.set(false);

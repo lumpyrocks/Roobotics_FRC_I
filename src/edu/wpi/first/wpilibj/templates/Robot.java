@@ -29,7 +29,7 @@ public class Robot extends IterativeRobot {
     RooForkliftPotentiometer flPot;
     RooCatapult pult;
     RooKicker kicker;
-    RooCosmetics cosmo;
+    //RooCosmetics cosmo;
     //NewRooAutoRanger ranger;
     RooAutonomous auton;
     RooWreakHavoc rwh;
@@ -53,7 +53,7 @@ public class Robot extends IterativeRobot {
         flPot = RooForkliftPotentiometer.getInstance();
         pult = RooCatapult.getInstance();
         kicker = RooKicker.getInstance();
-        cosmo = RooCosmetics.getInstance();
+        //cosmo = RooCosmetics.getInstance();
         auton = RooAutonomous.getInstance();
         //ranger = RooAutoRanger.getInstance();
         //ranger = NewRooAutoRanger.getInstance();
@@ -69,7 +69,7 @@ public class Robot extends IterativeRobot {
 
     
     public void autonomousInit (){
-        cosmo.updateLights();
+        //cosmo.updateLights();
         auton.doAutonomous();
         //arch.periodic();
     }
@@ -81,7 +81,7 @@ public class Robot extends IterativeRobot {
     }
 
     public void teleopInit () {
-        cosmo.updateLights();
+        //cosmo.updateLights();
         
     }
     

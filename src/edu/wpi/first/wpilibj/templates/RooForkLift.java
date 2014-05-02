@@ -34,27 +34,65 @@ public class RooForkLift {
     private double speed;
     
     //TODO: Figure this shiz out
-    private final double startingUpSpeed = .7;
+    private final double startingUpSpeed = 1;
     private final double startingDownSpeed = .18;
+    
+    private boolean buttonHeldNow;
+    private boolean buttonHeldLastTime;
+    private static RooDriveTrain rdt = RooDriveTrain.getInstance();
+    private static RooForkliftPotentiometer rflp = RooForkliftPotentiometer.getInstance();
+    
     
     public RooForkLift (Joystick joystick){
         motor = new Victor (RobotMap.FORKLIFT_MOTOR_CHANNEL);
         dInput = new DigitalInput(RobotMap.LIMIT_SWITCH_FORKLIFT_CHANNEL);
         this.joystick = joystick;
-        System.out.println("Water you docking aboat? The Forklift has been constructed! And I should buy a boat. To put my forklift in.");
-        System.out.println("Damn we have some wierd debug statements.");
-        System.out.println("LETS GET READY TO DROP SOME BONES ON THEM!!!!!!");
         
         SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_FORKLIFT_DOWN_SPEED_CONSTANT, startingDownSpeed);
         SmartDashboard.putNumber(RobotMap.SMARTDASHBOARD_FORKLIFT_UP_SPEED_CONSTANT, startingUpSpeed);
+        
+        buttonHeldNow = false;
+        buttonHeldLastTime = false;
+        SmartDashboard.putNumber("ForkLift Pot Angle", 90);
         
     }
     
     public void autoPickup(){
         if(dInput.get() == true && joystick.getRawButton(RobotMap.AUTO_PICKUP_SAFETY) == true){
             motor.set(SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_FORKLIFT_UP_SPEED_CONSTANT));
-            motor.set(SmartDashboard.getNumber(RobotMap.SMARTDASHBOARD_FORKLIFT_DOWN_SPEED_CONSTANT));
         }
+    }
+    
+    public void autoPickupTwo(){
+        if(buttonHeldNow == true && buttonHeldLastTime == false && joystick.getRawButton(1)){
+            rfl.setSpeed(1);
+            rdt.setBoth(0);
+            for(int i = 0; i <=200 && rflp.getAngle() <= SmartDashboard.getNumber("ForkLift Pot Angle"); i++ ) {
+                try{
+                    Thread.sleep(10);
+                }
+                catch(java.lang.InterruptedException e){
+                    
+                }
+            }
+            rfl.setSpeed(0);
+            //while(rflp.getAngle() >= SmartDashboard.getNumber("ForkLift Pot Angle")){
+              // try{
+                //   Thread.sleep(10);
+               //}
+               //catch(java.lang.InterruptedException e){
+                   
+               //}
+           // }
+             //rflp.getAngle();
+            
+            
+        }
+        buttonHeldLastTime = buttonHeldNow;
+        buttonHeldNow = dInput.get();
+        
+        
+        
     }
     
     public void periodic (){
@@ -79,7 +117,7 @@ public class RooForkLift {
             speed = -1 * joystick.getRawAxis(5);
 //        }
         setSpeed (speed);
-        autoPickup();
+        autoPickupTwo();
     }
     
     public void setSpeed (double newSpeed){

@@ -36,10 +36,12 @@ public class RooAdjust {
     public void adjust (){
         if (joystick.getRawButton(RobotMap.USE_AUTORANGER_TO_CORRECT)){
             skew = gyro.getSimplestAngle();
-            motorSkew = skew/180;
-            rdt.setLeft(-motorSkew);
-            rdt.setRight(motorSkew);
-            System.out.println(motorSkew);
+            if (Math.abs(skew)<=3){
+                motorSkew = skew/180;
+                rdt.setLeft(motorSkew);
+                rdt.setRight(-motorSkew);
+            }
+            System.out.println(skew);
         }
     }
 }
